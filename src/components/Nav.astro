@@ -9,7 +9,7 @@ const navLinks = [
 ];
 ---
 
-<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+<nav id="main-nav" transition:persist="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 animate-slide-down">
   <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
     <!-- Logo -->
     <a href="/" id="nav-logo" class="font-display text-2xl font-bold tracking-tight group">
@@ -104,6 +104,46 @@ const navLinks = [
       nav?.classList.add("bg-warm-white/90", "backdrop-blur-xl", "shadow-sm");
     } else {
       nav?.classList.remove("bg-warm-white/90", "backdrop-blur-xl", "shadow-sm");
+    }
+  });
+
+  // Handle active link updates for seamless navigation
+  document.addEventListener('astro:page-load', () => {
+    const currentPath = window.location.pathname;
+    const desktopLinks = document.querySelectorAll('#nav-links-desktop a');
+    const mobileLinks = document.querySelectorAll('#mobile-menu a');
+    
+    const updateLinks = (links: NodeListOf<HTMLAnchorElement>, isMobile: boolean) => {
+      links.forEach(link => {
+        const href = link.getAttribute('href');
+        if (!href) return;
+        
+        const isActive = currentPath === href || (href !== '/' && currentPath.startsWith(href));
+        
+        if (isActive) {
+          link.classList.add('bg-coral', 'text-white');
+          link.classList.remove('text-ink-light', 'hover:text-ink', 'hover:bg-cream');
+          if (!isMobile) link.classList.add('shadow-md', 'shadow-coral/25');
+        } else {
+          link.classList.remove('bg-coral', 'text-white', 'shadow-md', 'shadow-coral/25');
+          link.classList.add('text-ink-light', 'hover:text-ink', 'hover:bg-cream');
+        }
+      });
+    };
+    
+    updateLinks(desktopLinks as NodeListOf<HTMLAnchorElement>, false);
+    updateLinks(mobileLinks as NodeListOf<HTMLAnchorElement>, true);
+
+    // Also close mobile menu on page turn if it was left open
+    if (isOpen && btn && menu) {
+      isOpen = false;
+      menu.classList.add("hidden");
+      if (burger1 && burger2 && burger3) {
+        burger1.style.transform = "";
+        burger2.style.opacity = "";
+        burger3.style.transform = "";
+        burger3.style.width = "";
+      }
     }
   });
 </script>
