@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogCard from "../../components/BlogCard.astro";
+import FadeIn from "../../components/FadeIn";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="Blog — Josh" description="Thoughts on building, learning, design, and life.">
+  <section class="relative overflow-hidden" id="blog-hero">
+    <div class="blob w-[400px] h-[400px] bg-lavender/20 -top-20 -right-20"></div>
+
+    <div class="max-w-6xl mx-auto px-6 py-24 relative z-10">
+      <FadeIn client:load>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-ink mb-4">
+          The <span class="gradient-text">Blog</span>
+        </h1>
+        <p class="text-xl text-ink-light max-w-xl">
+          Thoughts, tutorials, and reflections on building, learning, and life.
+        </p>
+      </FadeIn>
+    </div>
+  </section>
+
+  <section class="pb-24" id="blog-posts">
+    <div class="max-w-6xl mx-auto px-6">
+      {posts.length === 0 ? (
+        <FadeIn client:load>
+          <div class="text-center py-20">
+            <div class="text-6xl mb-6">📝</div>
+            <h2 class="font-display text-2xl font-semibold text-ink mb-2">No posts yet</h2>
+            <p class="text-ink-muted">But something is brewing. Check back soon!</p>
+          </div>
+        </FadeIn>
+      ) : (
+        <div class="grid md:grid-cols-2 gap-8">
+          {posts.map((post, i) => (
+            <FadeIn client:load delay={i * 0.1}>
+              <BlogCard
+                title={post.data.title}
+                description={post.data.description}
+                date={post.data.date}
+                slug={post.id}
+                cover={post.data.cover}
+                tags={post.data.tags}
+              />
+            </FadeIn>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>

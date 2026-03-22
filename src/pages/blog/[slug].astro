@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import FadeIn from "../../components/FadeIn";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const formattedDate = post.data.date.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<BaseLayout title={`${post.data.title} — Josh`} description={post.data.description}>
+  <article id="blog-post">
+    <!-- Header -->
+    <section class="relative overflow-hidden">
+      <div class="blob w-[300px] h-[300px] bg-lavender/15 -top-16 -right-16"></div>
+
+      <div class="max-w-3xl mx-auto px-6 py-20 relative z-10">
+        <FadeIn client:load>
+          <a href="/blog" class="inline-flex items-center gap-2 text-sm font-medium text-ink-muted hover:text-coral transition-colors mb-8">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+            </svg>
+            Back to blog
+          </a>
+        </FadeIn>
+
+        <FadeIn client:load delay={0.1}>
+          <div class="flex items-center gap-3 mb-4">
+            <time class="text-sm font-medium text-ink-muted">{formattedDate}</time>
+            {post.data.tags && post.data.tags.length > 0 && (
+              <div class="flex gap-1.5">
+                {post.data.tags.map((tag: string) => (
+                  <span class="text-xs font-medium px-3 py-1 rounded-full bg-lavender/10 text-lavender">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-ink leading-tight">
+            {post.data.title}
+          </h1>
+        </FadeIn>
+      </div>
+    </section>
+
+    <!-- Cover image -->
+    {post.data.cover && (
+      <FadeIn client:load delay={0.2} className="max-w-4xl mx-auto px-6 mb-12">
+        <img
+          src={post.data.cover}
+          alt={post.data.title}
+          class="w-full rounded-2xl shadow-lg"
+        />
+      </FadeIn>
+    )}
+
+    <!-- Content -->
+    <FadeIn client:load delay={0.3}>
+      <div class="max-w-3xl mx-auto px-6 pb-24">
+        <div class="prose">
+          <Content />
+        </div>
+      </div>
+    </FadeIn>
+  </article>
+</BaseLayout>

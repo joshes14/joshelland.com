@@ -1,0 +1,112 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import GalleryCard from "../../components/GalleryCard.astro";
+import FadeIn from "../../components/FadeIn";
+import { getCollection } from "astro:content";
+
+const items = (await getCollection("gallery"))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const categories = ["all", "photography", "design", "life", "projects"];
+---
+
+<BaseLayout title="Gallery — Josh" description="Photos, designs, and visual stories from Josh's life.">
+  <section class="relative overflow-hidden" id="gallery-hero">
+    <div class="blob w-[400px] h-[400px] bg-coral/15 -top-20 -left-20"></div>
+
+    <div class="max-w-6xl mx-auto px-6 py-24 relative z-10">
+      <FadeIn client:load>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-ink mb-4">
+          The <span class="gradient-text-warm">Gallery</span>
+        </h1>
+        <p class="text-xl text-ink-light max-w-xl">
+          Photos, designs, and snapshots from life — my own little visual corner.
+        </p>
+      </FadeIn>
+    </div>
+  </section>
+
+  <!-- Filter tabs -->
+  <section class="pb-24" id="gallery-grid">
+    <div class="max-w-6xl mx-auto px-6">
+      <FadeIn client:load>
+        <div class="flex flex-wrap gap-2 mb-12" id="gallery-filters">
+          {categories.map((cat) => (
+            <button
+              class="gallery-filter px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border border-border-light hover:border-coral"
+              data-category={cat}
+            >
+              {cat.charAt(0).toUpperCase() + cat.slice(1)}
+            </button>
+          ))}
+        </div>
+      </FadeIn>
+
+      {items.length === 0 ? (
+        <FadeIn client:load>
+          <div class="text-center py-20">
+            <div class="text-6xl mb-6">📷</div>
+            <h2 class="font-display text-2xl font-semibold text-ink mb-2">Gallery is empty</h2>
+            <p class="text-ink-muted">Visual stories coming soon. Stay tuned!</p>
+          </div>
+        </FadeIn>
+      ) : (
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-items">
+          {items.map((item, i) => (
+            <FadeIn client:load delay={i * 0.05}>
+              <div class="gallery-item" data-category={item.data.category}>
+                <GalleryCard
+                  title={item.data.title}
+                  cover={item.data.cover}
+                  category={item.data.category}
+                  description={item.data.description}
+                />
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Gallery filtering
+  const filters = document.querySelectorAll<HTMLButtonElement>(".gallery-filter");
+  const items = document.querySelectorAll<HTMLElement>(".gallery-item");
+
+  // Set "all" as active by default
+  filters[0]?.classList.add("bg-coral", "text-white", "border-coral");
+
+  filters.forEach((filter) => {
+    filter.addEventListener("click", () => {
+      const category = filter.dataset.category;
+
+      // Update active filter styles
+      filters.forEach((f) => {
+        f.classList.remove("bg-coral", "text-white", "border-coral");
+      });
+      filter.classList.add("bg-coral", "text-white", "border-coral");
+
+      // Filter items
+      items.forEach((item) => {
+        if (category === "all" || item.dataset.category === category) {
+          item.style.display = "";
+          item.style.opacity = "0";
+          item.style.transform = "scale(0.95)";
+          requestAnimationFrame(() => {
+            item.style.transition = "opacity 0.4s, transform 0.4s";
+            item.style.opacity = "1";
+            item.style.transform = "scale(1)";
+          });
+        } else {
+          item.style.opacity = "0";
+          item.style.transform = "scale(0.95)";
+          setTimeout(() => {
+            item.style.display = "none";
+          }, 300);
+        }
+      });
+    });
+  });
+</script>

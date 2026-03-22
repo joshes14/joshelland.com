@@ -1,0 +1,138 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FadeIn from "../components/FadeIn";
+---
+
+<BaseLayout title="About — Josh" description="Get to know Josh — the human behind the projects, the blog, and the gallery.">
+  <section class="relative overflow-hidden" id="about-hero">
+    <!-- Decorative blobs -->
+    <div class="blob w-[400px] h-[400px] bg-sun/20 -top-20 -right-20"></div>
+    <div class="blob w-[300px] h-[300px] bg-coral/15 bottom-10 -left-20"></div>
+
+    <div class="max-w-4xl mx-auto px-6 py-24 relative z-10">
+      <FadeIn client:load>
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-border-light shadow-sm mb-8">
+          <span class="text-lg">👋</span>
+          <span class="text-sm font-medium text-ink-light">Nice to meet you</span>
+        </div>
+      </FadeIn>
+
+      <FadeIn client:load delay={0.1}>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-ink mb-8 leading-tight">
+          I'm <span class="gradient-text">Josh</span>, and I like<br />
+          making things <span class="gradient-text-warm">that matter.</span>
+        </h1>
+      </FadeIn>
+
+      <FadeIn client:load delay={0.2}>
+        <div class="prose max-w-2xl">
+          <p class="text-lg text-ink-light leading-relaxed">
+            I'm a creative developer who believes that the best work happens at the intersection of 
+            technology and human expression. Whether it's crafting a web experience, writing about 
+            something I've learned, or capturing a moment through a lens — I'm drawn to things that 
+            connect people and ideas.
+          </p>
+
+          <p class="text-lg text-ink-light leading-relaxed">
+            This site is my digital home — a place where I share my projects, thoughts, and the 
+            visual stories that make up my everyday life. No algorithms, no feeds, no noise. Just 
+            a space that's genuinely mine.
+          </p>
+        </div>
+      </FadeIn>
+    </div>
+  </section>
+
+  <!-- What I Do -->
+  <section class="py-24 bg-cream/50" id="what-i-do">
+    <div class="max-w-4xl mx-auto px-6">
+      <FadeIn client:load>
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-ink mb-12">What I'm into</h2>
+      </FadeIn>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+        <FadeIn client:load delay={0.1}>
+          <div class="bg-white rounded-2xl p-6 border border-border-light">
+            <div class="w-12 h-12 rounded-xl bg-coral/10 flex items-center justify-center mb-4">
+              <span class="text-2xl">🛠️</span>
+            </div>
+            <h3 class="font-display text-lg font-semibold text-ink mb-2">Building</h3>
+            <p class="text-ink-muted text-sm leading-relaxed">
+              Web apps, tools, and side projects. I enjoy the process of turning ideas into something 
+              people can actually use.
+            </p>
+          </div>
+        </FadeIn>
+
+        <FadeIn client:load delay={0.15}>
+          <div class="bg-white rounded-2xl p-6 border border-border-light">
+            <div class="w-12 h-12 rounded-xl bg-lavender/10 flex items-center justify-center mb-4">
+              <span class="text-2xl">✍️</span>
+            </div>
+            <h3 class="font-display text-lg font-semibold text-ink mb-2">Writing</h3>
+            <p class="text-ink-muted text-sm leading-relaxed">
+              I write to understand. Blog posts, notes, reflections — writing helps me process and 
+              share what I'm learning.
+            </p>
+          </div>
+        </FadeIn>
+
+        <FadeIn client:load delay={0.2}>
+          <div class="bg-white rounded-2xl p-6 border border-border-light">
+            <div class="w-12 h-12 rounded-xl bg-sky/10 flex items-center justify-center mb-4">
+              <span class="text-2xl">📸</span>
+            </div>
+            <h3 class="font-display text-lg font-semibold text-ink mb-2">Capturing</h3>
+            <p class="text-ink-muted text-sm leading-relaxed">
+              Photography, design work, life snapshots. The gallery is my visual diary — no filters, 
+              just moments.
+            </p>
+          </div>
+        </FadeIn>
+
+        <FadeIn client:load delay={0.25}>
+          <div class="bg-white rounded-2xl p-6 border border-border-light">
+            <div class="w-12 h-12 rounded-xl bg-sun/10 flex items-center justify-center mb-4">
+              <span class="text-2xl">🌱</span>
+            </div>
+            <h3 class="font-display text-lg font-semibold text-ink mb-2">Learning</h3>
+            <p class="text-ink-muted text-sm leading-relaxed">
+              Always picking up something new. New frameworks, new skills, new perspectives — 
+              the learning never stops.
+            </p>
+          </div>
+        </FadeIn>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-24" id="about-cta">
+    <div class="max-w-4xl mx-auto px-6">
+      <FadeIn client:load>
+        <div class="bg-gradient-to-br from-coral/5 via-lavender/5 to-sky/5 rounded-3xl p-12 text-center border border-border-light">
+          <h2 class="text-3xl md:text-4xl font-display font-bold text-ink mb-4">
+            Want to see what I've been up to?
+          </h2>
+          <p class="text-ink-muted text-lg mb-8 max-w-md mx-auto">
+            Check out my blog for written thoughts or the gallery for visual stories.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a
+              href="/blog"
+              class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-lavender to-sky text-white font-semibold shadow-lg shadow-lavender/25 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+            >
+              Read the blog
+            </a>
+            <a
+              href="/gallery"
+              class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white border border-border text-ink font-semibold hover:border-coral hover:text-coral hover:-translate-y-0.5 transition-all duration-300"
+            >
+              Browse gallery
+            </a>
+          </div>
+        </div>
+      </FadeIn>
+    </div>
+  </section>
+</BaseLayout>
