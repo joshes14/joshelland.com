@@ -9,32 +9,31 @@ interface Props {
 const { title, description, tags = [], link = "#" } = Astro.props;
 ---
 
-<a href={link} class="group block" id={`project-${title.toLowerCase().replace(/\s+/g, '-')}`}>
-  <div class="bg-white rounded-2xl p-6 border border-border-light shadow-sm hover:shadow-xl hover:shadow-coral/5 transition-all duration-500 hover:-translate-y-1">
-    <!-- Colored accent bar -->
-    <div class="w-12 h-1.5 rounded-full bg-gradient-to-r from-coral to-lavender mb-5 group-hover:w-20 transition-all duration-500"></div>
+<a href={link} class="group block h-full flex flex-col" id={`project-${title.toLowerCase().replace(/\s+/g, '-')}`}>
+  <div class="bg-surface p-8 border border-border hover:border-accent transition-all duration-300 h-full flex flex-col">
+    <div class="w-12 h-0.5 bg-primary mb-6 transition-all duration-500 group-hover:w-full"></div>
     
-    <h3 class="font-display text-lg font-semibold text-ink mb-2 group-hover:text-coral transition-colors duration-300">
+    <h3 class="font-display text-2xl font-semibold text-primary mb-3">
       {title}
     </h3>
     
-    <p class="text-ink-muted text-sm leading-relaxed mb-4">
+    <p class="text-text-muted text-base leading-relaxed mb-6 font-body font-light flex-grow">
       {description}
     </p>
     
     {tags.length > 0 && (
-      <div class="flex flex-wrap gap-2">
+      <div class="flex flex-wrap gap-2 mb-6 mt-auto">
         {tags.map((tag) => (
-          <span class="text-xs font-medium px-3 py-1 rounded-full bg-cream text-ink-muted">
+          <span class="text-xs font-semibold px-2 py-1 bg-accent/40 text-primary uppercase tracking-widest">
             {tag}
           </span>
         ))}
       </div>
     )}
     
-    <div class="mt-4 flex items-center gap-2 text-sm font-medium text-coral opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-      View project
-      <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div class="mt-auto flex items-center gap-2 text-sm uppercase tracking-widest font-semibold text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      View Project
+      <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
       </svg>
     </div>

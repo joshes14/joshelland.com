@@ -6,19 +6,14 @@ import FadeIn from "../components/FadeIn";
 
 <BaseLayout title="Josh — Creative Developer" description="Welcome to Josh's corner of the internet. Projects, thoughts, and life through a creative lens.">
   <!-- HERO SECTION -->
-  <section class="relative min-h-[90vh] flex items-center overflow-hidden" id="hero">
-    <!-- Decorative blobs -->
-    <div class="blob w-[500px] h-[500px] bg-coral/30 -top-32 -right-32"></div>
-    <div class="blob w-[400px] h-[400px] bg-lavender/25 bottom-0 -left-24"></div>
-    <div class="blob w-[300px] h-[300px] bg-sun/20 top-1/2 left-1/2 -translate-x-1/2"></div>
-
-    <div class="max-w-6xl mx-auto px-6 relative z-10">
-      <div class="max-w-3xl">
+  <section class="relative min-h-[90vh] flex items-center" id="hero">
+    <div class="max-w-6xl mx-auto px-6 relative z-10 w-full">
+      <div class="max-w-4xl">
         <!-- Tagline chip -->
         <FadeIn client:load delay={0}>
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-border-light shadow-sm mb-8">
-            <span class="w-2 h-2 rounded-full bg-mint animate-pulse"></span>
-            <span class="text-sm font-medium text-ink-light">Creative Developer & Curious Human</span>
+          <div class="inline-flex items-center gap-2 px-3 py-1 border border-border bg-[#F2EAE0] text-xs font-medium text-text-muted uppercase tracking-widest mb-10">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+            <span>DevOps Engineer & Musician</span>
           </div>
         </FadeIn>
 
@@ -26,15 +21,14 @@ import FadeIn from "../components/FadeIn";
         <AnimatedHeading
           client:load
           text="Hey, I'm Josh."
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-ink mb-6"
+          className="text-5xl sm:text-6xl md:text-8xl font-display font-semibold tracking-tight text-primary mb-8"
           delay={0.2}
         />
 
         <!-- Subheading -->
         <FadeIn client:load delay={0.6}>
-          <p class="text-xl md:text-2xl text-ink-light leading-relaxed max-w-xl mb-10">
-            I build things for the web, write about what I learn, and capture moments worth sharing. 
-            <span class="gradient-text-warm font-semibold">Welcome to my corner of the internet.</span>
+          <p class="text-xl md:text-2xl text-text-muted leading-relaxed max-w-2xl mb-12 font-body font-light">
+            I craft thoughtful digital experiences, write about design and engineering, and capture moments worth sharing. Welcome to my corner of the internet.
           </p>
         </FadeIn>
 
@@ -44,17 +38,16 @@ import FadeIn from "../components/FadeIn";
             <a
               href="/about"
               id="cta-about"
-              class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-coral to-coral-dark text-white font-semibold shadow-lg shadow-coral/25 hover:shadow-xl hover:shadow-coral/30 hover:-translate-y-0.5 transition-all duration-300"
+              class="inline-flex items-center justify-center px-8 py-3.5 font-medium hover:opacity-80 transition-opacity duration-300"
+              style="background-color: var(--color-primary); color: var(--color-surface);"
             >
               Get to know me
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
             </a>
             <a
               href="/blog"
               id="cta-blog"
-              class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white border border-border text-ink font-semibold hover:border-lavender hover:text-lavender hover:-translate-y-0.5 transition-all duration-300"
+              class="inline-flex items-center justify-center px-8 py-3.5 border font-medium hover:opacity-70 transition-opacity duration-300"
+              style="border-color: var(--color-primary); color: var(--color-primary);"
             >
               Read the blog
             </a>
@@ -64,73 +57,70 @@ import FadeIn from "../components/FadeIn";
     </div>
 
     <!-- Scroll indicator -->
-    <FadeIn client:load delay={1.2} className="absolute bottom-8 left-1/2 -translate-x-1/2">
-      <div class="flex flex-col items-center gap-2 text-ink-muted animate-bounce">
-        <span class="text-xs font-medium uppercase tracking-widest">Scroll</span>
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    <FadeIn client:load delay={1.2} className="absolute bottom-12 left-6 md:left-auto md:right-12">
+      <div class="flex flex-col items-center gap-3 text-text-muted">
+        <span class="text-xs font-medium uppercase tracking-widest" style="writing-mode: vertical-rl;">Scroll</span>
+        <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </div>
     </FadeIn>
   </section>
 
   <!-- HIGHLIGHTS SECTION -->
-  <section class="py-24" id="highlights">
+  <section class="py-32 bg-surface" id="highlights">
     <div class="max-w-6xl mx-auto px-6">
       <FadeIn client:load>
-        <div class="text-center mb-16">
-          <h2 class="text-3xl md:text-4xl font-display font-bold text-ink mb-4">
-            What you'll find here
+        <div class="mb-20">
+          <h2 class="text-3xl md:text-5xl font-display font-semibold text-primary mb-4">
+            Areas of Focus
           </h2>
-          <p class="text-ink-muted text-lg max-w-xl mx-auto">
-            A mix of projects, stories, and snapshots — all in one place.
+          <p class="text-text-muted text-lg max-w-xl">
+            A curated mix of projects, stories, and visual snapshots.
           </p>
         </div>
       </FadeIn>
 
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="grid md:grid-cols-3 gap-x-8 gap-y-12 relative">
         <!-- Blog highlight -->
         <FadeIn client:load delay={0.1}>
-          <a href="/blog" class="group block" id="highlight-blog">
-            <div class="bg-white rounded-2xl p-8 border border-border-light shadow-sm hover:shadow-xl hover:shadow-lavender/10 transition-all duration-500 hover:-translate-y-1 text-center">
-              <div class="w-16 h-16 rounded-2xl bg-lavender/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <svg class="w-8 h-8 text-lavender" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
-              </div>
-              <h3 class="font-display text-xl font-semibold text-ink mb-2 group-hover:text-lavender transition-colors">Blog</h3>
-              <p class="text-ink-muted text-sm">Thoughts on building, learning, and everything in between.</p>
+          <a href="/blog" class="group block h-full flex flex-col pt-8 border-t border-border" id="highlight-blog">
+            <div class="mb-6 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
             </div>
+            <h3 class="font-display text-2xl font-semibold text-primary mb-3">Writing</h3>
+            <p class="text-text-muted text-base mb-6 flex-grow">Thoughts on software architecture, design systems, and lessons learned along the way.</p>
+            <span class="text-sm font-medium uppercase tracking-widest text-primary group-hover:underline underline-offset-4 flex items-center gap-2">Read Articles <span class="group-hover:translate-x-1 transition-transform">→</span></span>
           </a>
         </FadeIn>
 
         <!-- Gallery highlight -->
         <FadeIn client:load delay={0.2}>
-          <a href="/gallery" class="group block" id="highlight-gallery">
-            <div class="bg-white rounded-2xl p-8 border border-border-light shadow-sm hover:shadow-xl hover:shadow-coral/10 transition-all duration-500 hover:-translate-y-1 text-center">
-              <div class="w-16 h-16 rounded-2xl bg-coral/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <svg class="w-8 h-8 text-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 class="font-display text-xl font-semibold text-ink mb-2 group-hover:text-coral transition-colors">Gallery</h3>
-              <p class="text-ink-muted text-sm">Photos, designs, and visual stories from everyday life.</p>
+           <a href="/gallery" class="group block h-full flex flex-col pt-8 border-t border-border" id="highlight-gallery">
+            <div class="mb-6 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
             </div>
+            <h3 class="font-display text-2xl font-semibold text-primary mb-3">Gallery</h3>
+             <p class="text-text-muted text-base mb-6 flex-grow">A visual log of experiments, photography, and UI/UX explorations.</p>
+            <span class="text-sm font-medium uppercase tracking-widest text-primary group-hover:underline underline-offset-4 flex items-center gap-2">View Work <span class="group-hover:translate-x-1 transition-transform">→</span></span>
           </a>
         </FadeIn>
 
         <!-- About highlight -->
         <FadeIn client:load delay={0.3}>
-          <a href="/about" class="group block" id="highlight-about">
-            <div class="bg-white rounded-2xl p-8 border border-border-light shadow-sm hover:shadow-xl hover:shadow-sun/10 transition-all duration-500 hover:-translate-y-1 text-center">
-              <div class="w-16 h-16 rounded-2xl bg-sun/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <svg class="w-8 h-8 text-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 class="font-display text-xl font-semibold text-ink mb-2 group-hover:text-sun transition-colors">About Me</h3>
-              <p class="text-ink-muted text-sm">The human behind the code — who I am and what drives me.</p>
+          <a href="/about" class="group block h-full flex flex-col pt-8 border-t border-border" id="highlight-about">
+            <div class="mb-6 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
             </div>
+            <h3 class="font-display text-2xl font-semibold text-primary mb-3">Profile</h3>
+            <p class="text-text-muted text-base mb-6 flex-grow">More about my background, philosophy, and how to get in touch.</p>
+            <span class="text-sm font-medium uppercase tracking-widest text-primary group-hover:underline underline-offset-4 flex items-center gap-2">About Me <span class="group-hover:translate-x-1 transition-transform">→</span></span>
           </a>
         </FadeIn>
       </div>
@@ -138,43 +128,39 @@ import FadeIn from "../components/FadeIn";
   </section>
 
   <!-- RECENT POSTS TEASER -->
-  <section class="py-24 bg-cream/50" id="recent-posts">
+  <section class="py-32" id="recent-posts">
     <div class="max-w-6xl mx-auto px-6">
       <FadeIn client:load>
-        <div class="flex items-end justify-between mb-12">
-          <div>
-            <h2 class="text-3xl md:text-4xl font-display font-bold text-ink mb-2">Recent thoughts</h2>
-            <p class="text-ink-muted">Latest from the blog</p>
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div class="max-w-xl">
+            <h2 class="text-3xl md:text-5xl font-display font-semibold text-primary mb-4">Latest Writing</h2>
+            <p class="text-text-muted text-lg">My most recent thoughts and tutorials.</p>
           </div>
-          <a href="/blog" class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-coral hover:gap-3 transition-all">
-            View all
+          <a href="/blog" class="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-widest text-primary hover:gap-3 transition-all underline-offset-4 hover:underline">
+            All Articles
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
         </div>
       </FadeIn>
 
       <FadeIn client:load delay={0.1}>
-        <div class="bg-white rounded-2xl p-8 border border-border-light shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <span class="text-xs font-medium px-3 py-1 rounded-full bg-lavender/10 text-lavender">dev</span>
-            <span class="text-xs text-ink-muted">March 22, 2026</span>
-          </div>
-          <h3 class="font-display text-xl font-semibold text-ink mb-2">
-            <a href="/blog/hello-world" class="hover:text-lavender transition-colors">Hello World — My First Post</a>
-          </h3>
-          <p class="text-ink-muted leading-relaxed">
-            Starting something new is always a mix of excitement and uncertainty. Here's why I decided to build this site and what I hope to share along the way.
-          </p>
-        </div>
-      </FadeIn>
-
-      <div class="mt-6 text-center sm:hidden">
-        <a href="/blog" class="inline-flex items-center gap-2 text-sm font-semibold text-coral">
-          View all posts →
+        <a href="/blog/hello-world" class="block group">
+          <article class="bg-surface p-8 md:p-10 border border-border hover:border-accent transition-colors duration-300">
+            <div class="flex items-center gap-4 mb-6">
+              <span class="text-xs font-semibold px-2 py-1 bg-accent/40 text-primary uppercase tracking-widest">Essay</span>
+              <span class="text-xs text-text-muted font-medium">March 22, 2026</span>
+            </div>
+            <h3 class="font-display text-3xl font-semibold text-primary mb-4 group-hover:underline underline-offset-4 decoration-1">
+              Hello World — Building My Portfolio
+            </h3>
+            <p class="text-text-muted leading-relaxed max-w-3xl text-lg">
+              Starting something new is always a mix of excitement and uncertainty. Here's why I decided to build this site from scratch with Astro and Tailwind CSS.
+            </p>
+          </article>
         </a>
-      </div>
+      </FadeIn>
     </div>
   </section>
 </BaseLayout>

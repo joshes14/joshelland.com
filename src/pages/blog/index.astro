@@ -10,33 +10,36 @@ const posts = (await getCollection("blog"))
 ---
 
 <BaseLayout title="Blog — Josh" description="Thoughts on building, learning, design, and life.">
-  <section class="relative overflow-hidden" id="blog-hero">
-    <div class="blob w-[400px] h-[400px] bg-lavender/20 -top-20 -right-20"></div>
-
-    <div class="max-w-6xl mx-auto px-6 py-24 relative z-10">
+  <section class="relative overflow-hidden pt-32 pb-20 border-b border-border" id="blog-hero">
+    <div class="max-w-4xl mx-auto px-6 relative z-10">
       <FadeIn client:load>
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-ink mb-4">
-          The <span class="gradient-text">Blog</span>
+        <span class="text-sm font-medium uppercase tracking-widest text-text-muted mb-4 block">Writing</span>
+        <h1 class="text-4xl sm:text-5xl md:text-7xl font-display font-semibold text-primary mb-6">
+          The Blog
         </h1>
-        <p class="text-xl text-ink-light max-w-xl">
-          Thoughts, tutorials, and reflections on building, learning, and life.
+        <p class="text-xl md:text-2xl text-text-muted max-w-2xl font-body font-light">
+          Thoughts, technical deep dives, and reflections on engineering and design.
         </p>
       </FadeIn>
     </div>
   </section>
 
-  <section class="pb-24" id="blog-posts">
-    <div class="max-w-6xl mx-auto px-6">
+  <section class="py-24 bg-[#F2EAE0]" id="blog-posts">
+    <div class="max-w-4xl mx-auto px-6">
       {posts.length === 0 ? (
         <FadeIn client:load>
-          <div class="text-center py-20">
-            <div class="text-6xl mb-6">📝</div>
-            <h2 class="font-display text-2xl font-semibold text-ink mb-2">No posts yet</h2>
-            <p class="text-ink-muted">But something is brewing. Check back soon!</p>
+          <div class="text-center py-32 border border-border">
+            <div class="mb-6 opacity-30">
+              <svg class="w-12 h-12 text-primary mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
+            </div>
+            <h2 class="font-display text-2xl font-semibold text-primary mb-2">No active posts yet</h2>
+            <p class="text-text-muted">Currently drafting. Check back soon.</p>
           </div>
         </FadeIn>
       ) : (
-        <div class="grid md:grid-cols-2 gap-8">
+        <div class="flex flex-col gap-16">
           {posts.map((post, i) => (
             <FadeIn client:load delay={i * 0.1}>
               <BlogCard

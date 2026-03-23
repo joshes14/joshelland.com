@@ -4,38 +4,34 @@ import FadeIn from "../components/FadeIn";
 ---
 
 <BaseLayout title="About — Josh" description="Get to know Josh — the human behind the projects, the blog, and the gallery.">
-  <section class="relative overflow-hidden" id="about-hero">
-    <!-- Decorative blobs -->
-    <div class="blob w-[400px] h-[400px] bg-sun/20 -top-20 -right-20"></div>
-    <div class="blob w-[300px] h-[300px] bg-coral/15 bottom-10 -left-20"></div>
-
-    <div class="max-w-4xl mx-auto px-6 py-24 relative z-10">
+  <section class="relative overflow-hidden pt-32 pb-20" id="about-hero">
+    <div class="max-w-4xl mx-auto px-6 relative z-10 w-full">
       <FadeIn client:load>
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-border-light shadow-sm mb-8">
-          <span class="text-lg">👋</span>
-          <span class="text-sm font-medium text-ink-light">Nice to meet you</span>
+        <div class="inline-flex items-center gap-2 px-3 py-1 border border-border bg-[#F2EAE0] text-xs font-medium text-text-muted uppercase tracking-widest mb-12">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+          <span>Profile</span>
         </div>
       </FadeIn>
 
       <FadeIn client:load delay={0.1}>
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-ink mb-8 leading-tight">
-          I'm <span class="gradient-text">Josh</span>, and I like<br />
-          making things <span class="gradient-text-warm">that matter.</span>
+        <h1 class="text-4xl sm:text-5xl md:text-7xl font-display font-semibold text-primary mb-10 leading-[1.1]">
+          I'm Josh, and I design<br />
+          digital experiences.
         </h1>
       </FadeIn>
 
       <FadeIn client:load delay={0.2}>
         <div class="prose max-w-2xl">
-          <p class="text-lg text-ink-light leading-relaxed">
+          <p class="text-xl md:text-2xl text-text-muted leading-relaxed mb-8 font-body font-light">
             I'm a creative developer who believes that the best work happens at the intersection of 
-            technology and human expression. Whether it's crafting a web experience, writing about 
-            something I've learned, or capturing a moment through a lens — I'm drawn to things that 
+            technology and thoughtful design. Whether it's crafting a web experience, writing about 
+            architecture, or capturing a moment through a lens — I'm drawn to things that 
             connect people and ideas.
           </p>
 
-          <p class="text-lg text-ink-light leading-relaxed">
+          <p class="text-xl md:text-2xl text-text-muted leading-relaxed font-body font-light">
             This site is my digital home — a place where I share my projects, thoughts, and the 
-            visual stories that make up my everyday life. No algorithms, no feeds, no noise. Just 
+            visual stories that make up my everyday life. No algorithms, no feeds. Just 
             a space that's genuinely mine.
           </p>
         </div>
@@ -44,61 +40,68 @@ import FadeIn from "../components/FadeIn";
   </section>
 
   <!-- What I Do -->
-  <section class="py-24 bg-cream/50" id="what-i-do">
-    <div class="max-w-4xl mx-auto px-6">
+  <section class="py-32 bg-surface border-t border-border" id="what-i-do">
+    <div class="max-w-4xl mx-auto px-6 relative">
       <FadeIn client:load>
-        <h2 class="text-3xl md:text-4xl font-display font-bold text-ink mb-12">What I'm into</h2>
+        <h2 class="text-2xl md:text-3xl font-display font-semibold text-primary mb-16 uppercase tracking-widest text-sm">
+          Core Principles
+        </h2>
       </FadeIn>
 
-      <div class="grid sm:grid-cols-2 gap-6">
+      <div class="grid sm:grid-cols-2 gap-x-12 gap-y-16">
         <FadeIn client:load delay={0.1}>
-          <div class="bg-white rounded-2xl p-6 border border-border-light">
-            <div class="w-12 h-12 rounded-xl bg-coral/10 flex items-center justify-center mb-4">
-              <span class="text-2xl">🛠️</span>
+          <div class="group">
+            <div class="mb-6 opacity-80 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
             </div>
-            <h3 class="font-display text-lg font-semibold text-ink mb-2">Building</h3>
-            <p class="text-ink-muted text-sm leading-relaxed">
-              Web apps, tools, and side projects. I enjoy the process of turning ideas into something 
-              people can actually use.
+            <h3 class="font-display text-xl font-semibold text-primary mb-3">Engineering</h3>
+            <p class="text-text-muted text-base leading-relaxed">
+              Web apps, tools, and systems. I enjoy the process of turning complex requirements into robust, scalable software architectures.
             </p>
           </div>
         </FadeIn>
 
         <FadeIn client:load delay={0.15}>
-          <div class="bg-white rounded-2xl p-6 border border-border-light">
-            <div class="w-12 h-12 rounded-xl bg-lavender/10 flex items-center justify-center mb-4">
-              <span class="text-2xl">✍️</span>
+          <div class="group">
+            <div class="mb-6 opacity-80 group-hover:opacity-100 transition-opacity">
+               <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+              </svg>
             </div>
-            <h3 class="font-display text-lg font-semibold text-ink mb-2">Writing</h3>
-            <p class="text-ink-muted text-sm leading-relaxed">
-              I write to understand. Blog posts, notes, reflections — writing helps me process and 
-              share what I'm learning.
+            <h3 class="font-display text-xl font-semibold text-primary mb-3">Writing</h3>
+            <p class="text-text-muted text-base leading-relaxed">
+              I write to understand. Technical breakdowns, reflections, and design systems analysis to help process what I'm learning.
             </p>
           </div>
         </FadeIn>
 
         <FadeIn client:load delay={0.2}>
-          <div class="bg-white rounded-2xl p-6 border border-border-light">
-            <div class="w-12 h-12 rounded-xl bg-sky/10 flex items-center justify-center mb-4">
-              <span class="text-2xl">📸</span>
+          <div class="group">
+            <div class="mb-6 opacity-80 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
             </div>
-            <h3 class="font-display text-lg font-semibold text-ink mb-2">Capturing</h3>
-            <p class="text-ink-muted text-sm leading-relaxed">
-              Photography, design work, life snapshots. The gallery is my visual diary — no filters, 
-              just moments.
+            <h3 class="font-display text-xl font-semibold text-primary mb-3">Photography</h3>
+            <p class="text-text-muted text-base leading-relaxed">
+              Design explorations and life snapshots. The gallery serves as a visual diary — uncurated and genuine aesthetics.
             </p>
           </div>
         </FadeIn>
 
         <FadeIn client:load delay={0.25}>
-          <div class="bg-white rounded-2xl p-6 border border-border-light">
-            <div class="w-12 h-12 rounded-xl bg-sun/10 flex items-center justify-center mb-4">
-              <span class="text-2xl">🌱</span>
+          <div class="group">
+            <div class="mb-6 opacity-80 group-hover:opacity-100 transition-opacity">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              </svg>
             </div>
-            <h3 class="font-display text-lg font-semibold text-ink mb-2">Learning</h3>
-            <p class="text-ink-muted text-sm leading-relaxed">
-              Always picking up something new. New frameworks, new skills, new perspectives — 
-              the learning never stops.
+            <h3 class="font-display text-xl font-semibold text-primary mb-3">Continuous Learning</h3>
+            <p class="text-text-muted text-base leading-relaxed">
+              Exploring new frameworks, methodologies, and perspectives. The pursuit of better craft never entirely stops.
             </p>
           </div>
         </FadeIn>
@@ -107,28 +110,32 @@ import FadeIn from "../components/FadeIn";
   </section>
 
   <!-- CTA Section -->
-  <section class="py-24" id="about-cta">
+  <section class="py-32 bg-[#F2EAE0]" id="about-cta">
     <div class="max-w-4xl mx-auto px-6">
       <FadeIn client:load>
-        <div class="bg-gradient-to-br from-coral/5 via-lavender/5 to-sky/5 rounded-3xl p-12 text-center border border-border-light">
-          <h2 class="text-3xl md:text-4xl font-display font-bold text-ink mb-4">
-            Want to see what I've been up to?
-          </h2>
-          <p class="text-ink-muted text-lg mb-8 max-w-md mx-auto">
-            Check out my blog for written thoughts or the gallery for visual stories.
-          </p>
-          <div class="flex flex-wrap justify-center gap-4">
+        <div class="bg-primary text-[#FFF4EA] p-12 md:p-16 flex flex-col md:flex-row gap-8 items-center justify-between">
+          <div class="max-w-xl">
+            <h2 class="text-3xl md:text-5xl font-display font-semibold mb-4 text-[#FFF4EA]">
+              Explore the work.
+            </h2>
+            <p class="text-[#FFF4EA] opacity-70 text-lg mb-0">
+              Check out the writing or browse visual stories.
+            </p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto shrink-0">
             <a
               href="/blog"
-              class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-lavender to-sky text-white font-semibold shadow-lg shadow-lavender/25 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+              class="inline-flex items-center justify-center px-8 py-4 font-medium hover:opacity-90 transition-opacity duration-300 w-full sm:w-auto"
+              style="background-color: var(--color-bg); color: var(--color-primary);"
             >
-              Read the blog
+              Read Articles
             </a>
             <a
               href="/gallery"
-              class="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white border border-border text-ink font-semibold hover:border-coral hover:text-coral hover:-translate-y-0.5 transition-all duration-300"
+              class="inline-flex items-center justify-center px-8 py-4 border font-medium hover:opacity-90 transition-opacity duration-300 w-full sm:w-auto"
+              style="border-color: var(--color-surface); color: var(--color-surface);"
             >
-              Browse gallery
+              View Gallery
             </a>
           </div>
         </div>

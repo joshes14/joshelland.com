@@ -7,37 +7,24 @@ interface Props {
 }
 
 const { title, cover, category, description } = Astro.props;
-
-const categoryColors: Record<string, string> = {
-  photography: "bg-sky/10 text-sky",
-  design: "bg-coral/10 text-coral",
-  life: "bg-mint/10 text-mint",
-  projects: "bg-lavender/10 text-lavender",
-};
-
-const colorClass = categoryColors[category] ?? "bg-cream text-ink-muted";
 ---
 
-<div class="group cursor-pointer" id={`gallery-${title.toLowerCase().replace(/\s+/g, '-')}`}>
-  <div class="relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:shadow-ink/10 transition-all duration-500">
-    <div class="aspect-square overflow-hidden">
-      <img
-        src={cover}
-        alt={title}
-        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-        loading="lazy"
-      />
-    </div>
-    
-    <!-- Overlay on hover -->
-    <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-5">
-      <span class:list={["text-xs font-semibold px-3 py-1 rounded-full w-fit mb-2", colorClass]}>
-        {category}
-      </span>
-      <h3 class="font-display text-white text-lg font-semibold">{title}</h3>
-      {description && (
-        <p class="text-white/70 text-sm mt-1 line-clamp-2">{description}</p>
-      )}
-    </div>
+<div class="group cursor-pointer relative block overflow-hidden aspect-square" data-src={cover} data-title={title}>
+  <img
+    src={cover}
+    alt={title}
+    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+    loading="lazy"
+  />
+  
+  <!-- Overlay info on hover (Instagram inspired) -->
+  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
+    <h3 class="font-display text-white text-xl md:text-2xl font-semibold mb-2">{title}</h3>
+    <span class="text-xs uppercase tracking-widest font-semibold text-white/90">
+      {category}
+    </span>
+    {description && (
+      <p class="text-white/80 text-sm mt-4 line-clamp-2 md:line-clamp-3 font-body max-w-xs">{description}</p>
+    )}
   </div>
 </div>
