@@ -1,8 +1,8 @@
 ---
 title: "Hello World — My First Post"
-date: 2026-03-22
+date: 2026-03-23
 description: "Starting something new is always a mix of excitement and uncertainty. Here's why I decided to build this site and what I hope to share along the way."
-tags: ["dev", "life"]
+tags: ["love", "life"]
 #cover: "/images/blog/hello-world.png"
 draft: false
 ---

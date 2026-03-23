@@ -1,20 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
 /* ===== CUSTOM THEME ===== */
 @theme {
-  --color-primary: #2C2A28;
-  --color-secondary: #5C5852;
-  --color-accent: #B4D3D9;
-  --color-cta: #FFF4EA;
-  --color-bg: #F2EAE0;
-  --color-surface: #FFF4EA;
-  --color-text: #2C2A28;
-  --color-text-muted: #5C5852;
-  --color-border: #E1D9CE;
+  --color-vintage-green: #1A3C25;
+  --color-vintage-clay: #B14A32;
+  --color-tennis-yellow: #D4A755;
+  --color-cream-bg: #F5F1E9;
+  --color-cream-surface: #FFFFFF;
+  --color-dark-slate: #11181C;
+  --color-muted-slate: #687076;
+  --color-warm-border: #E6E1D6;
 
-  --font-display: 'Archivo', sans-serif;
-  --font-body: 'Space Grotesk', sans-serif;
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', sans-serif;
 }
 
 /* ===== BASE STYLES ===== */
@@ -32,8 +31,8 @@ html {
 
 body {
   font-family: var(--font-body);
-  color: var(--color-text);
-  background-color: var(--color-bg);
+  color: var(--color-dark-slate);
+  background-color: var(--color-cream-bg);
   line-height: 1.6;
   margin: 0;
   overflow-x: hidden;
@@ -60,8 +59,8 @@ img {
 
 /* ===== SELECTION ===== */
 ::selection {
-  background-color: var(--color-primary);
-  color: var(--color-bg);
+  background-color: var(--color-vintage-green);
+  color: var(--color-cream-bg);
 }
 
 /* ===== SCROLLBAR ===== */
@@ -70,16 +69,16 @@ img {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-bg);
+  background: var(--color-cream-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border);
+  background: var(--color-warm-border);
   border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-text-muted);
+  background: var(--color-muted-slate);
 }
 
 /* ===== PROSE STYLES (Blog content) ===== */
@@ -87,11 +86,11 @@ img {
   max-width: 65ch;
   font-size: 1.125rem;
   line-height: 1.7;
-  color: var(--color-text);
+  color: var(--color-dark-slate);
 }
 
 .prose h1, .prose h2, .prose h3, .prose h4 {
-  color: var(--color-primary);
+  color: var(--color-vintage-green);
   margin-top: 2.5rem;
   margin-bottom: 1rem;
 }
@@ -101,11 +100,11 @@ img {
 
 .prose p {
   margin-bottom: 1.5rem;
-  color: var(--color-text);
+  color: var(--color-dark-slate);
 }
 
 .prose a {
-  color: var(--color-primary);
+  color: var(--color-vintage-green);
   text-decoration: underline;
   text-underline-offset: 4px;
   text-decoration-thickness: 1px;
@@ -116,23 +115,23 @@ img {
 }
 
 .prose blockquote {
-  border-left: 2px solid var(--color-primary);
+  border-left: 2px solid var(--color-vintage-green);
   padding-left: 1.5rem;
   margin-left: 0;
   font-style: italic;
-  color: var(--color-text-muted);
+  color: var(--color-muted-slate);
 }
 
 .prose code {
-  background: var(--color-border);
+  background: var(--color-warm-border);
   padding: 0.15em 0.3em;
   font-size: 0.85em;
   border-radius: 2px;
 }
 
 .prose pre {
-  background: var(--color-primary);
-  color: var(--color-bg);
+  background: var(--color-vintage-green);
+  color: var(--color-cream-bg);
   padding: 1.5rem;
   border-radius: 4px;
   overflow-x: auto;

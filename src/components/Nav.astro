@@ -12,9 +12,9 @@ const navLinks = [
 <nav id="main-nav" transition:persist="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 animate-slide-down">
   <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
     <!-- Logo -->
-    <a href="/" id="nav-logo" class="font-display text-2xl font-bold tracking-tight group text-primary">
+    <a href="/" id="nav-logo" class="font-display text-2xl font-bold tracking-tight group text-vintage-green">
       <span>Josh</span>
-      <span class="inline-block w-1.5 h-1.5 rounded-full bg-primary ml-0.5 mb-1 group-hover:scale-125 transition-transform duration-300"></span>
+      <span class="inline-block w-1.5 h-1.5 rounded-full bg-vintage-green ml-0.5 mb-1 group-hover:scale-125 transition-transform duration-300"></span>
     </a>
 
     <!-- Desktop Links -->
@@ -25,8 +25,8 @@ const navLinks = [
           class:list={[
             "text-sm font-medium transition-colors duration-200",
             currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href))
-              ? "text-primary"
-              : "text-text-muted hover:text-primary",
+              ? "text-vintage-green"
+              : "text-muted-slate hover:text-vintage-green",
           ]}
         >
           {link.label}
@@ -37,19 +37,19 @@ const navLinks = [
     <!-- Mobile Menu Button -->
     <button
       id="mobile-menu-btn"
-      class="md:hidden flex flex-col gap-1.5 p-2 rounded-md hover:bg-accent/40 transition-colors"
+      class="md:hidden flex flex-col gap-1.5 p-2 rounded-md hover:bg-tennis-yellow/40 transition-colors"
       aria-label="Toggle menu"
     >
-      <span class="block w-5 h-0.5 bg-primary rounded-full transition-all duration-300" id="burger-1"></span>
-      <span class="block w-5 h-0.5 bg-primary rounded-full transition-all duration-300" id="burger-2"></span>
-      <span class="block w-3.5 h-0.5 bg-primary rounded-full transition-all duration-300 ml-auto" id="burger-3"></span>
+      <span class="block w-5 h-0.5 bg-vintage-green rounded-full transition-all duration-300" id="burger-1"></span>
+      <span class="block w-5 h-0.5 bg-vintage-green rounded-full transition-all duration-300" id="burger-2"></span>
+      <span class="block w-3.5 h-0.5 bg-vintage-green rounded-full transition-all duration-300 ml-auto" id="burger-3"></span>
     </button>
   </div>
 
   <!-- Mobile Menu -->
   <div
     id="mobile-menu"
-    class="md:hidden hidden absolute top-full left-0 right-0 bg-[#F2EAE0]/95 backdrop-blur-xl border-b border-border shadow-sm py-4"
+    class="md:hidden hidden absolute top-full left-0 right-0 bg-cream-bg/95 backdrop-blur-xl border-b border-warm-border shadow-sm py-4"
   >
     <div class="max-w-6xl mx-auto px-6 flex flex-col gap-2">
       {navLinks.map((link) => (
@@ -58,8 +58,8 @@ const navLinks = [
           class:list={[
             "px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200",
             currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href))
-              ? "bg-accent/40 text-primary"
-              : "text-text-muted hover:text-primary hover:bg-accent/40",
+              ? "bg-tennis-yellow/40 text-vintage-green"
+              : "text-muted-slate hover:text-vintage-green hover:bg-tennis-yellow/40",
           ]}
         >
           {link.label}
@@ -101,9 +101,9 @@ const navLinks = [
 
   window.addEventListener("scroll", () => {
     if (window.scrollY > 50) {
-      nav?.classList.add("bg-[#F2EAE0]/90", "backdrop-blur-xl", "border-b", "border-border");
+      nav?.classList.add("bg-cream-bg/90", "backdrop-blur-xl", "border-b", "border-warm-border", "shadow-sm");
     } else {
-      nav?.classList.remove("bg-[#F2EAE0]/90", "backdrop-blur-xl", "border-b", "border-border");
+      nav?.classList.remove("bg-cream-bg/90", "backdrop-blur-xl", "border-b", "border-warm-border", "shadow-sm");
     }
   });
 
@@ -122,19 +122,19 @@ const navLinks = [
         
         if (isActive) {
           if (isMobile) {
-            link.classList.add('bg-accent/40', 'text-primary');
-            link.classList.remove('text-text-muted', 'hover:text-primary', 'hover:bg-accent/40');
+            link.classList.add('bg-tennis-yellow/40', 'text-vintage-green');
+            link.classList.remove('text-muted-slate', 'hover:text-vintage-green', 'hover:bg-tennis-yellow/40');
           } else {
-            link.classList.add('text-primary');
-            link.classList.remove('text-text-muted', 'hover:text-primary');
+            link.classList.add('text-vintage-green');
+            link.classList.remove('text-muted-slate', 'hover:text-vintage-green');
           }
         } else {
           if (isMobile) {
-            link.classList.remove('bg-accent/40', 'text-primary');
-            link.classList.add('text-text-muted', 'hover:text-primary', 'hover:bg-accent/40');
+            link.classList.remove('bg-tennis-yellow/40', 'text-vintage-green');
+            link.classList.add('text-muted-slate', 'hover:text-vintage-green', 'hover:bg-tennis-yellow/40');
           } else {
-            link.classList.remove('text-primary');
-            link.classList.add('text-text-muted', 'hover:text-primary');
+            link.classList.remove('text-vintage-green');
+            link.classList.add('text-muted-slate', 'hover:text-vintage-green');
           }
         }
       });
