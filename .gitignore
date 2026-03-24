@@ -25,3 +25,7 @@ pnpm-debug.log*
 
 # Images live on the server only — upload via scp, not git
 public/images/
+
+# Agent
+.agent/
+.github/
