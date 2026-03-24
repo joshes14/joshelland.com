@@ -10,8 +10,8 @@ const { title, description, tags = [], link = "#" } = Astro.props;
 ---
 
 <a href={link} class="group block h-full flex flex-col" id={`project-${title.toLowerCase().replace(/\s+/g, '-')}`}>
-  <div class="bg-cream-surface p-8 border border-warm-border group-hover:border-vintage-clay group-hover:shadow-lg transition-all duration-300 h-full flex flex-col">
-    <div class="w-12 h-1 bg-tennis-yellow mb-6 transition-all duration-500 group-hover:w-full"></div>
+  <div class="surface-panel rounded-2xl p-8 group-hover:border-vintage-clay/40 group-hover:shadow-lg transition-all duration-300 h-full flex flex-col">
+    <div class="w-12 h-1 bg-vintage-clay/40 mb-6 transition-all duration-500 group-hover:w-full group-hover:bg-vintage-clay"></div>
     
     <h3 class="font-display text-2xl font-semibold text-vintage-green mb-3">
       {title}
@@ -24,7 +24,7 @@ const { title, description, tags = [], link = "#" } = Astro.props;
     {tags.length > 0 && (
       <div class="flex flex-wrap gap-2 mb-6 mt-auto">
         {tags.map((tag) => (
-          <span class="text-xs font-semibold px-2 py-1 bg-tennis-yellow/40 text-vintage-green uppercase tracking-widest">
+          <span class="text-xs font-semibold px-2 py-1 bg-white/80 border border-warm-border text-vintage-green uppercase tracking-widest rounded-md">
             {tag}
           </span>
         ))}

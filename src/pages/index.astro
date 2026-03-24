@@ -11,158 +11,123 @@ const latestPost = posts[0];
 ---
 
 <BaseLayout title="Josh — Creative Developer" description="Welcome to Josh's corner of the internet. Projects, thoughts, and life through a creative lens.">
-  <!-- HERO SECTION -->
-  <section class="relative min-h-[90vh] flex items-center" id="hero">
-    <div class="max-w-6xl mx-auto px-6 relative z-10 w-full">
-      <div class="max-w-4xl">
-        <!-- Tagline chip -->
+  <section class="relative min-h-[86vh] flex items-center overflow-hidden" id="hero">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute -top-20 right-0 w-80 h-80 bg-vintage-clay/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-8 -left-12 w-72 h-72 bg-tennis-yellow/20 rounded-full blur-3xl"></div>
+      <div class="court-lines"></div>
+    </div>
+
+    <div class="section-shell relative z-10 w-full pt-16 md:pt-8">
+      <div class="max-w-3xl">
         <FadeIn client:load delay={0}>
-          <div class="inline-flex items-center gap-2 px-3 py-1 border border-warm-border bg-cream-surface text-xs font-medium text-muted-slate uppercase tracking-widest mb-10 shadow-sm">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium text-muted-slate uppercase tracking-[0.16em] mb-8 glass-panel">
             <span class="w-1.5 h-1.5 rounded-full bg-tennis-yellow animate-pulse"></span>
-            <span>DevOps Engineer & Creative</span>
+            <span>Grand Slam energy for digital craft</span>
           </div>
         </FadeIn>
 
-        <!-- Main heading -->
         <AnimatedHeading
           client:load
-          text="Hey, I'm Josh."
-          className="text-5xl sm:text-6xl md:text-8xl font-display font-semibold tracking-tight text-vintage-green mb-8"
-          delay={0.2}
+          text="Soft focus. Sharp execution."
+          className="text-5xl sm:text-6xl md:text-8xl font-display font-semibold tracking-tight text-vintage-green mb-6"
+          delay={0.1}
         />
 
-        <!-- Subheading -->
-        <FadeIn client:load delay={0.6}>
-          <p class="text-xl md:text-2xl text-muted-slate leading-relaxed max-w-2xl mb-12 font-body font-light">
-            I craft thoughtful digital experiences, write about design and engineering, and capture moments worth sharing. Welcome to my corner of the internet.
+        <FadeIn client:load delay={0.45}>
+          <p class="text-lg md:text-2xl text-muted-slate leading-relaxed max-w-2xl mb-10 font-body font-normal">
+            I build digital products with a clean rhythm, document the process in writing, and share visual and sonic inspiration that keeps the work moving.
           </p>
         </FadeIn>
 
-        <!-- CTA buttons -->
-        <FadeIn client:load delay={0.8}>
-          <div class="flex flex-wrap gap-4 mt-8">
-            <a
-              href="/about"
-              id="cta-about"
-              class="inline-flex items-center justify-center px-8 py-3.5 font-bold transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
-              style="background-color: var(--color-vintage-clay); color: #FFFFFF !important;"
-            >
+        <FadeIn client:load delay={0.6}>
+          <div class="flex flex-wrap gap-3 mt-6">
+            <a href="/about" id="cta-about" class="focus-ring cta-primary inline-flex items-center justify-center px-7 py-3 rounded-xl font-semibold transition-all duration-300">
               Get to know me
             </a>
-            <a
-              href="/blog"
-              id="cta-blog"
-              class="inline-flex items-center justify-center px-8 py-3.5 border border-vintage-clay text-vintage-clay font-bold hover:bg-vintage-clay/5 transition-all duration-300 shadow-sm"
-            >
-              Read the blog
+            <a href="/music" id="cta-music" class="focus-ring cta-secondary inline-flex items-center justify-center px-7 py-3 rounded-xl font-semibold transition-all duration-300">
+              Visit music room
             </a>
           </div>
         </FadeIn>
       </div>
     </div>
-
-    <!-- Scroll indicator -->
-    <FadeIn client:load delay={1.2} className="absolute bottom-12 left-6 md:left-auto md:right-12">
-      <div class="flex flex-col items-center gap-3 text-muted-slate">
-        <span class="text-xs font-medium uppercase tracking-widest" style="writing-mode: vertical-rl;">Scroll</span>
-        <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </div>
-    </FadeIn>
   </section>
 
-  <!-- HIGHLIGHTS SECTION -->
-  <section class="py-32 bg-cream-surface" id="highlights">
-    <div class="max-w-6xl mx-auto px-6">
+  <section class="py-20 md:py-24" id="highlights">
+    <div class="section-shell">
       <FadeIn client:load>
-        <div class="mb-20">
-          <h2 class="text-3xl md:text-5xl font-display font-semibold text-vintage-green mb-4">
-            Areas of Focus
+        <div class="mb-12 md:mb-14">
+          <h2 class="text-3xl md:text-5xl font-display font-semibold text-vintage-green mb-3">
+            Explore by mood
           </h2>
           <p class="text-muted-slate text-lg max-w-xl">
-            A curated mix of projects, stories, and visual snapshots.
+            Four ways to navigate the same creative thread.
           </p>
         </div>
       </FadeIn>
 
-      <div class="grid md:grid-cols-3 gap-x-8 gap-y-12 relative">
-        <!-- Blog highlight -->
-        <FadeIn client:load delay={0.1}>
-          <a href="/blog" class="group block h-full flex flex-col pt-8 border-t border-warm-border hover:border-vintage-clay transition-colors duration-300" id="highlight-blog">
-            <div class="mb-6 text-vintage-green group-hover:text-vintage-clay transition-colors duration-300">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-              </svg>
-            </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <FadeIn client:load delay={0.06}>
+          <a href="/blog" class="surface-panel rounded-2xl p-6 h-full flex flex-col group hover:border-vintage-clay/45 transition-all duration-300 cursor-pointer" id="highlight-blog">
             <h3 class="font-display text-2xl font-semibold text-vintage-green mb-3">Writing</h3>
-            <p class="text-muted-slate text-base mb-6 flex-grow">Thoughts on software architecture, design systems, and lessons learned along the way.</p>
-            <span class="text-sm font-medium uppercase tracking-widest text-vintage-green group-hover:text-vintage-clay group-hover:underline underline-offset-4 flex items-center gap-2">Read Articles <span class="group-hover:translate-x-1 transition-transform">→</span></span>
+            <p class="text-muted-slate text-sm leading-relaxed mb-8 flex-grow">Build notes, architecture choices, and practical lessons.</p>
+            <span class="text-xs uppercase tracking-[0.2em] font-medium text-vintage-green group-hover:text-vintage-clay transition-colors">Read blog</span>
           </a>
         </FadeIn>
 
-        <!-- Gallery highlight -->
-        <FadeIn client:load delay={0.2}>
-           <a href="/gallery" class="group block h-full flex flex-col pt-8 border-t border-warm-border hover:border-vintage-clay transition-colors duration-300" id="highlight-gallery">
-            <div class="mb-6 text-vintage-green group-hover:text-vintage-clay transition-colors duration-300">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-            </div>
+        <FadeIn client:load delay={0.12}>
+          <a href="/gallery" class="surface-panel rounded-2xl p-6 h-full flex flex-col group hover:border-vintage-clay/45 transition-all duration-300 cursor-pointer" id="highlight-gallery">
             <h3 class="font-display text-2xl font-semibold text-vintage-green mb-3">Gallery</h3>
-             <p class="text-muted-slate text-base mb-6 flex-grow">A visual log of experiments, photography, and UI/UX explorations.</p>
-            <span class="text-sm font-medium uppercase tracking-widest text-vintage-green group-hover:text-vintage-clay group-hover:underline underline-offset-4 flex items-center gap-2">View Work <span class="group-hover:translate-x-1 transition-transform">→</span></span>
+            <p class="text-muted-slate text-sm leading-relaxed mb-8 flex-grow">Photos, concepts, and snapshots from ongoing experiments.</p>
+            <span class="text-xs uppercase tracking-[0.2em] font-medium text-vintage-green group-hover:text-vintage-clay transition-colors">View gallery</span>
           </a>
         </FadeIn>
 
-        <!-- About highlight -->
-        <FadeIn client:load delay={0.3}>
-          <a href="/about" class="group block h-full flex flex-col pt-8 border-t border-warm-border hover:border-vintage-clay transition-colors duration-300" id="highlight-about">
-            <div class="mb-6 text-vintage-green group-hover:text-vintage-clay transition-colors duration-300">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <h3 class="font-display text-2xl font-semibold text-vintage-green mb-3">Profile</h3>
-            <p class="text-muted-slate text-base mb-6 flex-grow">More about my background, philosophy, and how to get in touch.</p>
-            <span class="text-sm font-medium uppercase tracking-widest text-vintage-green group-hover:text-vintage-clay group-hover:underline underline-offset-4 flex items-center gap-2">About Me <span class="group-hover:translate-x-1 transition-transform">→</span></span>
+        <FadeIn client:load delay={0.18}>
+          <a href="/about" class="surface-panel rounded-2xl p-6 h-full flex flex-col group hover:border-vintage-clay/45 transition-all duration-300 cursor-pointer" id="highlight-about">
+            <h3 class="font-display text-2xl font-semibold text-vintage-green mb-3">About</h3>
+            <p class="text-muted-slate text-sm leading-relaxed mb-8 flex-grow">Background, values, and how I approach craft and systems.</p>
+            <span class="text-xs uppercase tracking-[0.2em] font-medium text-vintage-green group-hover:text-vintage-clay transition-colors">Meet Josh</span>
+          </a>
+        </FadeIn>
+
+        <FadeIn client:load delay={0.24}>
+          <a href="/music" class="surface-panel rounded-2xl p-6 h-full flex flex-col group hover:border-vintage-clay/45 transition-all duration-300 cursor-pointer" id="highlight-music">
+            <h3 class="font-display text-2xl font-semibold text-vintage-green mb-3">Music</h3>
+            <p class="text-muted-slate text-sm leading-relaxed mb-8 flex-grow">A rotating set of tracks and playlists that frame each project season.</p>
+            <span class="text-xs uppercase tracking-[0.2em] font-medium text-vintage-green group-hover:text-vintage-clay transition-colors">Open music page</span>
           </a>
         </FadeIn>
       </div>
     </div>
   </section>
 
-  <!-- RECENT POSTS TEASER -->
-  <section class="py-32" id="recent-posts">
-    <div class="max-w-6xl mx-auto px-6">
+  <section class="pb-10 md:pb-16" id="recent-posts">
+    <div class="section-shell">
       <FadeIn client:load>
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div class="max-w-xl">
-            <h2 class="text-3xl md:text-5xl font-display font-semibold text-vintage-green mb-4">Latest Writing</h2>
-            <p class="text-muted-slate text-lg">My most recent thoughts and tutorials.</p>
+            <h2 class="text-3xl md:text-4xl font-display font-semibold text-vintage-green mb-2">Latest writing</h2>
+            <p class="text-muted-slate text-base">One recent post to start with.</p>
           </div>
-          <a href="/blog" class="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-widest text-vintage-green hover:gap-3 transition-all underline-offset-4 hover:underline">
-            All Articles
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
+          <a href="/blog" class="text-sm font-medium uppercase tracking-[0.2em] text-vintage-green hover:text-vintage-clay transition-colors">All articles</a>
         </div>
       </FadeIn>
 
       <FadeIn client:load delay={0.1}>
         {latestPost ? (
-          <a href={`/blog/${latestPost.id}`} class="block group">
-            <article class="bg-cream-surface p-8 md:p-10 border border-warm-border group-hover:border-vintage-clay transition-all duration-300 shadow-md">
-              <div class="flex items-center gap-4 mb-6">
+          <a href={`/blog/${latestPost.id}`} class="block group cursor-pointer">
+            <article class="surface-panel rounded-2xl p-7 md:p-9 group-hover:border-vintage-clay/45 transition-all duration-300">
+              <div class="flex items-center gap-4 mb-5">
                 {latestPost.data.tags && latestPost.data.tags.length > 0 && (
-                  <span class="text-xs font-semibold px-2 py-1 bg-tennis-yellow/40 text-vintage-green uppercase tracking-widest">{latestPost.data.tags[0]}</span>
+                  <span class="text-xs font-semibold px-2 py-1 bg-white/80 border border-warm-border text-vintage-green uppercase tracking-widest rounded-md">{latestPost.data.tags[0]}</span>
                 )}
                 <span class="text-xs text-muted-slate font-medium">
                   {latestPost.data.date.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}
                 </span>
               </div>
-              <h3 class="font-display text-3xl md:text-4xl font-semibold text-vintage-green mb-4 group-hover:text-vintage-clay group-hover:underline underline-offset-4 decoration-1 transition-all">
+              <h3 class="font-display text-2xl md:text-3xl font-semibold text-vintage-green mb-3 group-hover:text-vintage-clay transition-colors duration-300">
                 {latestPost.data.title}
               </h3>
               <p class="text-muted-slate leading-relaxed max-w-3xl text-lg line-clamp-2">
@@ -171,7 +136,7 @@ const latestPost = posts[0];
             </article>
           </a>
         ) : (
-          <div class="p-12 border border-dashed border-warm-border text-center text-muted-slate">
+          <div class="p-12 border border-dashed border-warm-border text-center text-muted-slate rounded-2xl surface-panel">
             <p>New stories arriving soon.</p>
           </div>
         )}

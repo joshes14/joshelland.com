@@ -10,10 +10,14 @@ const posts = (await getCollection("blog"))
 ---
 
 <BaseLayout title="Blog — Josh" description="Thoughts on building, learning, design, and life.">
-  <section class="relative overflow-hidden pt-32 pb-20 border-b border-warm-border" id="blog-hero">
-    <div class="max-w-4xl mx-auto px-6 relative z-10">
+  <section class="relative overflow-hidden pt-28 pb-16" id="blog-hero">
+    <div class="court-lines"></div>
+    <div class="section-shell max-w-4xl relative z-10">
       <FadeIn client:load>
-        <span class="text-sm font-medium uppercase tracking-widest text-muted-slate mb-4 block">Writing</span>
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium text-muted-slate uppercase tracking-[0.16em] mb-6 glass-panel">
+          <span class="w-1.5 h-1.5 rounded-full bg-tennis-yellow"></span>
+          Press box archive
+        </span>
         <h1 class="text-4xl sm:text-5xl md:text-7xl font-display font-semibold text-vintage-green mb-6">
           The Blog
         </h1>
@@ -24,11 +28,11 @@ const posts = (await getCollection("blog"))
     </div>
   </section>
 
-  <section class="py-24 bg-cream-bg" id="blog-posts">
-    <div class="max-w-4xl mx-auto px-6">
+  <section class="py-16 md:py-20" id="blog-posts">
+    <div class="section-shell max-w-5xl">
       {posts.length === 0 ? (
         <FadeIn client:load>
-          <div class="text-center py-32 border border-warm-border">
+          <div class="text-center py-24 border border-warm-border rounded-2xl surface-panel">
             <div class="mb-6 opacity-30">
               <svg class="w-12 h-12 text-vintage-green mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -39,7 +43,7 @@ const posts = (await getCollection("blog"))
           </div>
         </FadeIn>
       ) : (
-        <div class="flex flex-col gap-16">
+        <div class="flex flex-col gap-6">
           {posts.map((post, i) => (
             <FadeIn client:load delay={i * 0.1}>
               <BlogCard

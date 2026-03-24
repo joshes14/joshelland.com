@@ -6,27 +6,35 @@ const navLinks = [
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
   { label: "Gallery", href: "/gallery" },
+  { label: "Music", href: "/music" },
 ];
 ---
 
-<nav id="main-nav" transition:persist="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 animate-slide-down">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+<nav id="main-nav" transition:persist="navbar" class="fixed top-4 left-4 right-4 z-50 transition-all duration-300">
+  <div class="section-shell glass-panel rounded-2xl py-3.5 flex items-center justify-between transition-all duration-300 border border-white/80">
     <!-- Logo -->
-    <a href="/" id="nav-logo" class="font-display text-2xl font-bold tracking-tight group text-vintage-green">
-      <span>Josh</span>
-      <span class="inline-block w-1.5 h-1.5 rounded-full bg-vintage-green ml-0.5 mb-1 group-hover:scale-125 transition-transform duration-300"></span>
+    <a href="/" id="nav-logo" class="focus-ring group rounded-xl px-2 py-1.5 flex items-center gap-2.5 transition-all duration-300 hover:bg-white/55">
+      <span class="w-8 h-8 rounded-lg bg-vintage-green text-white text-xs font-semibold grid place-items-center shadow-sm transition-transform duration-300 group-hover:scale-105">
+        J
+      </span>
+      <span class="leading-none hidden sm:flex flex-col">
+        <span class="font-display text-sm sm:text-base tracking-[0.14em] font-bold text-vintage-green">JOSH</span>
+        <span class="text-[10px] uppercase tracking-[0.22em] text-muted-slate mt-1">Studio</span>
+      </span>
+      <span class="leading-none sm:hidden font-display text-lg tracking-[0.12em] font-bold text-vintage-green">J</span>
+      <span class="w-1.5 h-1.5 rounded-full bg-tennis-yellow group-hover:scale-125 transition-transform duration-300"></span>
     </a>
 
     <!-- Desktop Links -->
-    <div class="hidden md:flex items-center gap-6" id="nav-links-desktop">
+    <div class="hidden md:flex items-center gap-1" id="nav-links-desktop">
       {navLinks.map((link) => (
         <a
           href={link.href}
           class:list={[
-            "text-sm font-medium transition-colors duration-200",
+            "focus-ring rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200",
             currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href))
-              ? "text-vintage-green"
-              : "text-muted-slate hover:text-vintage-green",
+              ? "bg-white/75 text-vintage-green shadow-sm"
+              : "text-muted-slate hover:text-vintage-green hover:bg-white/55",
           ]}
         >
           {link.label}
@@ -37,7 +45,7 @@ const navLinks = [
     <!-- Mobile Menu Button -->
     <button
       id="mobile-menu-btn"
-      class="md:hidden flex flex-col gap-1.5 p-2 rounded-md hover:bg-tennis-yellow/40 transition-colors"
+      class="focus-ring md:hidden flex flex-col gap-1.5 p-2.5 rounded-lg hover:bg-white/60 transition-colors"
       aria-label="Toggle menu"
     >
       <span class="block w-5 h-0.5 bg-vintage-green rounded-full transition-all duration-300" id="burger-1"></span>
@@ -49,17 +57,17 @@ const navLinks = [
   <!-- Mobile Menu -->
   <div
     id="mobile-menu"
-    class="md:hidden hidden absolute top-full left-0 right-0 bg-cream-bg/95 backdrop-blur-xl border-b border-warm-border shadow-sm py-4"
+    class="md:hidden hidden absolute top-[calc(100%+0.5rem)] left-0 right-0 glass-panel border border-white/80 rounded-2xl shadow-sm py-3"
   >
-    <div class="max-w-6xl mx-auto px-6 flex flex-col gap-2">
+    <div class="px-3 flex flex-col gap-1.5">
       {navLinks.map((link) => (
         <a
           href={link.href}
           class:list={[
-            "px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200",
+            "focus-ring px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200",
             currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href))
-              ? "bg-tennis-yellow/40 text-vintage-green"
-              : "text-muted-slate hover:text-vintage-green hover:bg-tennis-yellow/40",
+              ? "bg-white/80 text-vintage-green"
+              : "text-muted-slate hover:text-vintage-green hover:bg-white/70",
           ]}
         >
           {link.label}
@@ -100,10 +108,12 @@ const navLinks = [
   const nav = document.getElementById("main-nav");
 
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-      nav?.classList.add("bg-cream-bg/90", "backdrop-blur-xl", "border-b", "border-warm-border", "shadow-sm");
+    if (window.scrollY > 24) {
+      nav?.classList.add("top-2");
+      nav?.classList.remove("top-4");
     } else {
-      nav?.classList.remove("bg-cream-bg/90", "backdrop-blur-xl", "border-b", "border-warm-border", "shadow-sm");
+      nav?.classList.add("top-4");
+      nav?.classList.remove("top-2");
     }
   });
 
@@ -122,19 +132,19 @@ const navLinks = [
         
         if (isActive) {
           if (isMobile) {
-            link.classList.add('bg-tennis-yellow/40', 'text-vintage-green');
-            link.classList.remove('text-muted-slate', 'hover:text-vintage-green', 'hover:bg-tennis-yellow/40');
+            link.classList.add('bg-white/80', 'text-vintage-green');
+            link.classList.remove('text-muted-slate', 'hover:text-vintage-green', 'hover:bg-white/70');
           } else {
-            link.classList.add('text-vintage-green');
-            link.classList.remove('text-muted-slate', 'hover:text-vintage-green');
+            link.classList.add('bg-white/75', 'text-vintage-green', 'shadow-sm');
+            link.classList.remove('text-muted-slate', 'hover:text-vintage-green', 'hover:bg-white/55');
           }
         } else {
           if (isMobile) {
-            link.classList.remove('bg-tennis-yellow/40', 'text-vintage-green');
-            link.classList.add('text-muted-slate', 'hover:text-vintage-green', 'hover:bg-tennis-yellow/40');
+            link.classList.remove('bg-white/80', 'text-vintage-green');
+            link.classList.add('text-muted-slate', 'hover:text-vintage-green', 'hover:bg-white/70');
           } else {
-            link.classList.remove('text-vintage-green');
-            link.classList.add('text-muted-slate', 'hover:text-vintage-green');
+            link.classList.remove('bg-white/75', 'text-vintage-green', 'shadow-sm');
+            link.classList.add('text-muted-slate', 'hover:text-vintage-green', 'hover:bg-white/55');
           }
         }
       });

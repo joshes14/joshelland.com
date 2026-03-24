@@ -4,17 +4,17 @@ import FadeIn from "../components/FadeIn";
 ---
 
 <BaseLayout title="About — Josh" description="Get to know Josh — the human behind the projects, the blog, and the gallery.">
-  <section class="relative overflow-hidden pt-32 pb-20" id="about-hero">
-    <div class="max-w-4xl mx-auto px-6 relative z-10 w-full">
+  <section class="relative overflow-hidden pt-28 pb-16" id="about-hero">
+    <div class="section-shell relative z-10 w-full max-w-4xl">
       <FadeIn client:load>
-        <div class="inline-flex items-center gap-2 px-3 py-1 border border-warm-border bg-cream-surface text-xs font-medium text-muted-slate uppercase tracking-widest mb-12 shadow-sm">
-          <span class="w-1.5 h-1.5 rounded-full bg-tennis-yellow animate-pulse"></span>
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium text-muted-slate uppercase tracking-[0.16em] mb-8 glass-panel">
+          <span class="w-1.5 h-1.5 rounded-full bg-vintage-clay animate-pulse"></span>
           <span>Profile</span>
         </div>
       </FadeIn>
 
       <FadeIn client:load delay={0.1}>
-        <h1 class="text-4xl sm:text-5xl md:text-7xl font-display font-semibold text-vintage-green mb-10 leading-[1.1]">
+        <h1 class="text-4xl sm:text-5xl md:text-7xl font-display font-semibold text-vintage-green mb-8 leading-[1.05]">
           I'm Josh, and I design<br />
           digital experiences.
         </h1>
@@ -40,17 +40,17 @@ import FadeIn from "../components/FadeIn";
   </section>
 
   <!-- What I Do -->
-  <section class="py-32 bg-cream-surface border-t border-warm-border" id="what-i-do">
-    <div class="max-w-4xl mx-auto px-6 relative">
+  <section class="py-16 md:py-24" id="what-i-do">
+    <div class="section-shell max-w-5xl relative">
       <FadeIn client:load>
-        <h2 class="text-2xl md:text-3xl font-display font-semibold text-vintage-green mb-16 uppercase tracking-widest text-sm">
+        <h2 class="text-2xl md:text-3xl font-display font-semibold text-vintage-green mb-12 uppercase tracking-[0.16em] text-sm">
           Core Principles
         </h2>
       </FadeIn>
 
-      <div class="grid sm:grid-cols-2 gap-x-12 gap-y-16">
+      <div class="grid sm:grid-cols-2 gap-5">
         <FadeIn client:load delay={0.1}>
-          <div class="group">
+          <div class="surface-panel rounded-2xl p-6 group h-full">
             <div class="mb-6 opacity-80 group-hover:opacity-100 transition-opacity">
               <svg class="w-6 h-6 text-vintage-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -64,7 +64,7 @@ import FadeIn from "../components/FadeIn";
         </FadeIn>
 
         <FadeIn client:load delay={0.15}>
-          <div class="group">
+          <div class="surface-panel rounded-2xl p-6 group h-full">
             <div class="mb-6 opacity-80 group-hover:opacity-100 transition-opacity">
                <svg class="w-6 h-6 text-vintage-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
@@ -78,7 +78,7 @@ import FadeIn from "../components/FadeIn";
         </FadeIn>
 
         <FadeIn client:load delay={0.2}>
-          <div class="group">
+          <div class="surface-panel rounded-2xl p-6 group h-full">
             <div class="mb-6 opacity-80 group-hover:opacity-100 transition-opacity">
               <svg class="w-6 h-6 text-vintage-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
@@ -93,7 +93,7 @@ import FadeIn from "../components/FadeIn";
         </FadeIn>
 
         <FadeIn client:load delay={0.25}>
-          <div class="group">
+          <div class="surface-panel rounded-2xl p-6 group h-full">
             <div class="mb-6 opacity-80 group-hover:opacity-100 transition-opacity">
               <svg class="w-6 h-6 text-vintage-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -110,29 +110,28 @@ import FadeIn from "../components/FadeIn";
   </section>
 
   <!-- CTA Section -->
-  <section class="py-32 bg-cream-bg" id="about-cta">
-    <div class="max-w-4xl mx-auto px-6">
+  <section class="py-12 md:py-20" id="about-cta">
+    <div class="section-shell max-w-5xl">
       <FadeIn client:load>
-        <div class="bg-vintage-green text-white p-12 md:p-16 flex flex-col md:flex-row gap-8 items-center justify-between shadow-xl">
+        <div class="glass-panel text-vintage-green rounded-3xl p-8 md:p-12 flex flex-col md:flex-row gap-8 items-center justify-between">
           <div class="max-w-xl">
-            <h2 class="text-3xl md:text-5xl font-display font-semibold mb-4 text-white">
+            <h2 class="text-3xl md:text-5xl font-display font-semibold mb-4 text-vintage-green">
               Explore the work.
             </h2>
-            <p class="text-white opacity-80 text-lg mb-0">
+            <p class="text-muted-slate text-lg mb-0">
               Check out the writing or browse visual stories.
             </p>
           </div>
           <div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto shrink-0">
             <a
               href="/blog"
-              class="inline-flex items-center justify-center px-8 py-4 font-bold transition-colors duration-300 w-full sm:w-auto shadow-md"
-              style="background-color: var(--color-vintage-clay); color: #FFFFFF !important;"
+              class="focus-ring cta-primary inline-flex items-center justify-center px-8 py-4 rounded-xl font-semibold transition-all duration-300 w-full sm:w-auto"
             >
               Read Articles
             </a>
             <a
               href="/gallery"
-              class="inline-flex items-center justify-center px-8 py-4 border border-white text-white font-medium hover:bg-white/10 transition-colors duration-300 w-full sm:w-auto"
+              class="focus-ring cta-secondary inline-flex items-center justify-center px-8 py-4 rounded-xl font-medium transition-colors duration-300 w-full sm:w-auto"
             >
               View Gallery
             </a>

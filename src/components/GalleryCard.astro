@@ -9,7 +9,7 @@ interface Props {
 const { title, cover, category, description } = Astro.props;
 ---
 
-<div class="group cursor-pointer relative block overflow-hidden aspect-square" data-src={cover} data-title={title}>
+<div class="group cursor-pointer relative block overflow-hidden aspect-square rounded-2xl surface-panel" data-src={cover} data-title={title}>
   <img
     src={cover}
     alt={title}
@@ -17,8 +17,7 @@ const { title, cover, category, description } = Astro.props;
     loading="lazy"
   />
   
-  <!-- Overlay info on hover (Vintage inspired) -->
-  <div class="absolute inset-0 bg-vintage-green/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-6 text-center">
+  <div class="absolute inset-0 bg-gradient-to-t from-[#041c4fd1] via-[#0068d8a8] to-[#ffd4472e] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-end p-6 text-center">
     <h3 class="font-display text-white text-xl md:text-2xl font-semibold mb-2">{title}</h3>
     <span class="text-xs uppercase tracking-widest font-semibold text-white/90">
       {category}

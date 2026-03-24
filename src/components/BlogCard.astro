@@ -17,14 +17,14 @@ const formattedDate = date.toLocaleDateString("en-US", {
 });
 ---
 
-<a href={`/blog/${slug}`} class="group block" id={`blog-card-${slug}`}>
-  <article class="flex flex-col md:flex-row gap-8 items-start group-hover:opacity-80 transition-opacity duration-300">
+<a href={`/blog/${slug}`} class="group block cursor-pointer" id={`blog-card-${slug}`}>
+  <article class="surface-panel rounded-2xl p-5 md:p-6 flex flex-col md:flex-row gap-6 items-start group-hover:border-vintage-clay/40 group-hover:shadow-lg transition-all duration-300">
     {cover && (
-      <div class="w-full md:w-1/3 aspect-[4/3] overflow-hidden flex-shrink-0">
+      <div class="w-full md:w-1/3 aspect-[4/3] overflow-hidden rounded-xl flex-shrink-0">
         <img
           src={cover}
           alt={title}
-          class="w-full h-full object-cover transition-all duration-700"
+          class="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.03]"
           loading="lazy"
         />
       </div>
@@ -36,7 +36,7 @@ const formattedDate = date.toLocaleDateString("en-US", {
         {tags.length > 0 && (
           <div class="flex gap-2">
             {tags.slice(0, 3).map((tag) => (
-              <span class="text-xs font-semibold px-2 py-1 bg-tennis-yellow/40 text-vintage-green tracking-widest uppercase">
+              <span class="text-xs font-semibold px-2 py-1 bg-white/70 border border-warm-border text-vintage-green tracking-widest uppercase rounded-md">
                 {tag}
               </span>
             ))}
@@ -44,7 +44,7 @@ const formattedDate = date.toLocaleDateString("en-US", {
         )}
       </div>
       
-      <h3 class="font-display text-2xl md:text-3xl font-semibold text-vintage-green mb-4 group-hover:text-vintage-clay group-hover:underline underline-offset-4 decoration-1 transition-all">
+      <h3 class="font-display text-2xl md:text-3xl font-semibold text-vintage-green mb-3 group-hover:text-vintage-clay transition-colors duration-300">
         {title}
       </h3>
       
@@ -52,7 +52,7 @@ const formattedDate = date.toLocaleDateString("en-US", {
         {description}
       </p>
       
-      <div class="inline-flex items-center gap-2 text-sm uppercase tracking-widest font-semibold text-vintage-green">
+      <div class="inline-flex items-center gap-2 text-sm uppercase tracking-widest font-semibold text-vintage-green group-hover:text-vintage-clay transition-colors">
         Read Article
         <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />

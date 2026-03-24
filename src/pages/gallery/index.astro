@@ -11,10 +11,10 @@ const categories = ["all", "photography", "design", "life", "projects"];
 ---
 
 <BaseLayout title="Gallery — Josh" description="Photos, designs, and visual stories from Josh's life.">
-  <section class="relative overflow-hidden pt-32 pb-20 border-b border-warm-border" id="gallery-hero">
-    <div class="max-w-6xl mx-auto px-6 relative z-10 w-full">
+  <section class="relative overflow-hidden pt-28 pb-16" id="gallery-hero">
+    <div class="section-shell relative z-10 w-full">
       <FadeIn client:load>
-        <span class="text-sm font-medium uppercase tracking-widest text-muted-slate mb-4 block">Visuals</span>
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium text-muted-slate uppercase tracking-[0.16em] mb-6 glass-panel">Visual archive</span>
         <h1 class="text-4xl sm:text-5xl md:text-7xl font-display font-semibold text-vintage-green mb-6">
           The Gallery
         </h1>
@@ -26,13 +26,13 @@ const categories = ["all", "photography", "design", "life", "projects"];
   </section>
 
   <!-- Filter tabs -->
-  <section class="py-24 bg-cream-bg font-display" id="gallery-grid">
-    <div class="max-w-6xl mx-auto px-6">
+  <section class="py-16 md:py-20 font-display" id="gallery-grid">
+    <div class="section-shell">
       <FadeIn client:load>
-        <div class="flex flex-wrap gap-3 mb-16" id="gallery-filters">
+        <div class="flex flex-wrap gap-2 mb-10" id="gallery-filters">
           {categories.map((cat) => (
             <button
-              class="gallery-filter px-6 py-2 border border-warm-border bg-cream-bg text-vintage-green text-xs uppercase tracking-widest font-medium transition-all duration-300 hover:border-tennis-yellow hover:text-vintage-clay shadow-sm"
+              class="gallery-filter cursor-pointer focus-ring px-5 py-2 rounded-full border border-warm-border bg-white/70 text-vintage-green text-xs uppercase tracking-widest font-medium transition-all duration-300 hover:border-vintage-clay hover:text-vintage-clay shadow-sm"
               data-category={cat}
             >
               {cat}
@@ -43,7 +43,7 @@ const categories = ["all", "photography", "design", "life", "projects"];
 
       {items.length === 0 ? (
         <FadeIn client:load>
-          <div class="text-center py-32 border border-warm-border">
+          <div class="text-center py-24 border border-warm-border rounded-2xl surface-panel">
             <div class="mb-6 opacity-30">
               <svg class="w-12 h-12 text-vintage-green mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -54,7 +54,7 @@ const categories = ["all", "photography", "design", "life", "projects"];
           </div>
         </FadeIn>
       ) : (
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-items">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-items">
           {items.map((item, i) => (
             <FadeIn client:load delay={i * 0.05}>
               <div class="gallery-item" data-category={item.data.category}>
@@ -101,7 +101,7 @@ const categories = ["all", "photography", "design", "life", "projects"];
   };
 
   const deactivateFilter = (f: HTMLElement) => {
-    f.style.backgroundColor = "var(--color-cream-bg)";
+    f.style.backgroundColor = "rgba(255,255,255,0.7)";
     f.style.color = "var(--color-vintage-green)";
     f.style.borderColor = "var(--color-warm-border)";
     f.style.boxShadow = "";
