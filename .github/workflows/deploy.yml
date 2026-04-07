@@ -42,6 +42,6 @@ jobs:
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
-            kubectl apply -f /home/${{ secrets.VM_USER }}/k8s/
-            kubectl rollout restart deployment/portfolio
-            kubectl rollout status deployment/portfolio
+            sudo kubectl apply -f /home/${{ secrets.VM_USER }}/k8s/
+            sudo kubectl rollout restart deployment/portfolio
+            sudo kubectl rollout status deployment/portfolio
