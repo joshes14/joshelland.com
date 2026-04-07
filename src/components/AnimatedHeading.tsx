@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 interface Props {
   text: string;
@@ -8,6 +8,7 @@ interface Props {
 
 export default function AnimatedHeading({ text, className = "", delay = 0 }: Props) {
   const words = text.split(" ");
+  const reduceMotion = useReducedMotion();
 
   return (
     <motion.h1
@@ -21,14 +22,15 @@ export default function AnimatedHeading({ text, className = "", delay = 0 }: Pro
           key={i}
           className="inline-block mr-[0.3em]"
           variants={{
-            hidden: { opacity: 0, y: 30, rotateX: -40 },
+            hidden: { opacity: 0, y: reduceMotion ? 8 : 20, rotateX: reduceMotion ? 0 : -18, scale: reduceMotion ? 1 : 0.98 },
             visible: {
               opacity: 1,
               y: 0,
               rotateX: 0,
+              scale: 1,
               transition: {
-                duration: 0.5,
-                delay: delay + i * 0.08,
+                duration: reduceMotion ? 0.22 : 0.52,
+                delay: delay + i * (reduceMotion ? 0.03 : 0.07),
                 ease: [0.22, 1, 0.36, 1],
               },
             },

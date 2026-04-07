@@ -22,28 +22,25 @@ const formattedDate = post.data.date.toLocaleDateString("en-US", {
 ---
 
 <BaseLayout title={`${post.data.title} — Josh`} description={post.data.description}>
-  <article id="blog-post">
-    <!-- Header -->
-    <section class="relative overflow-hidden">
-      <div class="blob w-[300px] h-[300px] bg-lavender/15 -top-16 -right-16"></div>
-
-      <div class="max-w-3xl mx-auto px-6 py-20 relative z-10">
+  <article id="blog-post" class="min-h-screen">
+    <section class="relative overflow-hidden pt-28 pb-12">
+      <div class="section-shell max-w-4xl relative z-10 w-full">
         <FadeIn client:load>
-          <a href="/blog" class="inline-flex items-center gap-2 text-sm font-medium text-ink-muted hover:text-coral transition-colors mb-8">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <a href="/blog" class="inline-flex items-center gap-2 text-sm uppercase tracking-widest font-semibold text-muted-slate hover:text-vintage-green transition-colors mb-12 group">
+            <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
             </svg>
-            Back to blog
+            Archives
           </a>
         </FadeIn>
 
         <FadeIn client:load delay={0.1}>
-          <div class="flex items-center gap-3 mb-4">
-            <time class="text-sm font-medium text-ink-muted">{formattedDate}</time>
+          <div class="flex flex-wrap items-center gap-4 mb-8">
+            <time class="text-sm uppercase tracking-widest font-medium text-muted-slate">{formattedDate}</time>
             {post.data.tags && post.data.tags.length > 0 && (
-              <div class="flex gap-1.5">
+              <div class="flex gap-2">
                 {post.data.tags.map((tag: string) => (
-                  <span class="text-xs font-medium px-3 py-1 rounded-full bg-lavender/10 text-lavender">
+                  <span class="text-xs uppercase tracking-widest font-semibold px-2 py-1 bg-white/80 border border-warm-border rounded-md text-vintage-green">
                     {tag}
                   </span>
                 ))}
@@ -51,27 +48,30 @@ const formattedDate = post.data.date.toLocaleDateString("en-US", {
             )}
           </div>
 
-          <h1 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-ink leading-tight">
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-semibold text-vintage-green leading-[1.1]">
             {post.data.title}
           </h1>
         </FadeIn>
       </div>
     </section>
 
-    <!-- Cover image -->
     {post.data.cover && (
-      <FadeIn client:load delay={0.2} className="max-w-4xl mx-auto px-6 mb-12">
-        <img
-          src={post.data.cover}
-          alt={post.data.title}
-          class="w-full rounded-2xl shadow-lg"
-        />
+      <FadeIn client:load delay={0.2}>
+        <div class="section-shell max-w-4xl pb-8">
+          <figure class="overflow-hidden rounded-2xl border border-warm-border bg-white/70 shadow-[0_20px_45px_-30px_rgba(11,26,79,0.5)]">
+            <img
+              src={post.data.cover}
+              alt={`Cover image for ${post.data.title}`}
+              class="w-full h-auto object-cover"
+            />
+          </figure>
+        </div>
       </FadeIn>
     )}
 
     <!-- Content -->
     <FadeIn client:load delay={0.3}>
-      <div class="max-w-3xl mx-auto px-6 pb-24">
+      <div class="section-shell max-w-4xl pb-28 pt-4">
         <div class="prose">
           <Content />
         </div>

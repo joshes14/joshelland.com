@@ -2,31 +2,29 @@
 const currentPath = Astro.url.pathname;
 
 const navLinks = [
-  { label: "Home", href: "/" },
+  { label: "Work", href: "/gallery" },
+  { label: "Writing", href: "/blog" },
   { label: "About", href: "/about" },
-  { label: "Blog", href: "/blog" },
-  { label: "Gallery", href: "/gallery" },
+  { label: "Music", href: "/music" },
 ];
 ---
 
-<nav id="main-nav" transition:persist="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 animate-slide-down">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-    <!-- Logo -->
-    <a href="/" id="nav-logo" class="font-display text-2xl font-bold tracking-tight group">
-      <span class="gradient-text">Josh</span>
-      <span class="inline-block w-2 h-2 rounded-full bg-coral ml-0.5 mb-1 group-hover:scale-125 transition-transform duration-300"></span>
+<nav id="main-nav" transition:persist="navbar" class="nav-wrap">
+  <div id="nav-shell" class="nav-bar">
+    <!-- Wordmark - simple text, no box -->
+    <a href="/" id="nav-logo" class="nav-wordmark focus-ring">
+      Josh Elland
     </a>
 
-    <!-- Desktop Links -->
-    <div class="hidden md:flex items-center gap-1" id="nav-links-desktop">
+    <!-- Desktop Links - simple horizontal list -->
+    <div class="nav-links" id="nav-links-desktop">
       {navLinks.map((link) => (
         <a
           href={link.href}
           class:list={[
-            "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
-            currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href))
-              ? "bg-coral text-white shadow-md shadow-coral/25"
-              : "text-ink-light hover:text-ink hover:bg-cream",
+            "nav-link focus-ring",
+            (currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href)))
+              && "is-active",
           ]}
         >
           {link.label}
@@ -37,113 +35,82 @@ const navLinks = [
     <!-- Mobile Menu Button -->
     <button
       id="mobile-menu-btn"
-      class="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-cream transition-colors"
-      aria-label="Toggle menu"
+      class="nav-burger focus-ring"
+      aria-label="Menu"
     >
-      <span class="block w-5 h-0.5 bg-ink rounded-full transition-all duration-300" id="burger-1"></span>
-      <span class="block w-5 h-0.5 bg-ink rounded-full transition-all duration-300" id="burger-2"></span>
-      <span class="block w-3.5 h-0.5 bg-ink rounded-full transition-all duration-300 ml-auto" id="burger-3"></span>
+      <span id="burger-1"></span>
+      <span id="burger-2"></span>
     </button>
   </div>
 
   <!-- Mobile Menu -->
-  <div
-    id="mobile-menu"
-    class="md:hidden hidden absolute top-full left-0 right-0 bg-warm-white/95 backdrop-blur-xl border-b border-border-light shadow-lg"
-  >
-    <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-1">
-      {navLinks.map((link) => (
-        <a
-          href={link.href}
-          class:list={[
-            "px-4 py-3 rounded-xl text-base font-medium transition-all duration-300",
-            currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href))
-              ? "bg-coral text-white"
-              : "text-ink-light hover:text-ink hover:bg-cream",
-          ]}
-        >
-          {link.label}
-        </a>
-      ))}
-    </div>
+  <div id="mobile-menu" class="nav-mobile-menu">
+    {navLinks.map((link, i) => (
+      <a
+        href={link.href}
+        class:list={[
+          "nav-mobile-link",
+          (currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href)))
+            && "is-active",
+        ]}
+        style={`--i: ${i}`}
+      >
+        {link.label}
+      </a>
+    ))}
   </div>
 </nav>
 
 <script>
-  // Mobile menu toggle
   const btn = document.getElementById("mobile-menu-btn");
   const menu = document.getElementById("mobile-menu");
   const burger1 = document.getElementById("burger-1");
   const burger2 = document.getElementById("burger-2");
-  const burger3 = document.getElementById("burger-3");
+  const nav = document.getElementById("main-nav");
 
   let isOpen = false;
 
+  const isTransparentNavPage = () => document.body.dataset.transparentNav === "true";
+
+  const syncNavState = () => {
+    if (!nav) return;
+    const scrolled = window.scrollY > 40;
+    nav.classList.toggle("is-scrolled", scrolled);
+  };
+
   btn?.addEventListener("click", () => {
     isOpen = !isOpen;
-    menu?.classList.toggle("hidden");
-
-    if (isOpen) {
-      burger1!.style.transform = "rotate(45deg) translate(3px, 3px)";
-      burger2!.style.opacity = "0";
-      burger3!.style.transform = "rotate(-45deg) translate(3px, -3px)";
-      burger3!.style.width = "1.25rem";
-    } else {
-      burger1!.style.transform = "";
-      burger2!.style.opacity = "";
-      burger3!.style.transform = "";
-      burger3!.style.width = "";
-    }
+    menu?.classList.toggle("is-open", isOpen);
+    btn?.classList.toggle("is-open", isOpen);
   });
 
-  // Navbar scroll effect
-  const nav = document.getElementById("main-nav");
+  window.addEventListener("scroll", syncNavState, { passive: true });
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-      nav?.classList.add("bg-warm-white/90", "backdrop-blur-xl", "shadow-sm");
-    } else {
-      nav?.classList.remove("bg-warm-white/90", "backdrop-blur-xl", "shadow-sm");
-    }
-  });
-
-  // Handle active link updates for seamless navigation
   document.addEventListener('astro:page-load', () => {
     const currentPath = window.location.pathname;
     const desktopLinks = document.querySelectorAll('#nav-links-desktop a');
     const mobileLinks = document.querySelectorAll('#mobile-menu a');
     
-    const updateLinks = (links: NodeListOf<HTMLAnchorElement>, isMobile: boolean) => {
+    const updateLinks = (links: NodeListOf<Element>) => {
       links.forEach(link => {
         const href = link.getAttribute('href');
         if (!href) return;
-        
         const isActive = currentPath === href || (href !== '/' && currentPath.startsWith(href));
-        
-        if (isActive) {
-          link.classList.add('bg-coral', 'text-white');
-          link.classList.remove('text-ink-light', 'hover:text-ink', 'hover:bg-cream');
-          if (!isMobile) link.classList.add('shadow-md', 'shadow-coral/25');
-        } else {
-          link.classList.remove('bg-coral', 'text-white', 'shadow-md', 'shadow-coral/25');
-          link.classList.add('text-ink-light', 'hover:text-ink', 'hover:bg-cream');
-        }
+        link.classList.toggle('is-active', isActive);
       });
     };
     
-    updateLinks(desktopLinks as NodeListOf<HTMLAnchorElement>, false);
-    updateLinks(mobileLinks as NodeListOf<HTMLAnchorElement>, true);
+    updateLinks(desktopLinks);
+    updateLinks(mobileLinks);
 
-    // Also close mobile menu on page turn if it was left open
     if (isOpen && btn && menu) {
       isOpen = false;
-      menu.classList.add("hidden");
-      if (burger1 && burger2 && burger3) {
-        burger1.style.transform = "";
-        burger2.style.opacity = "";
-        burger3.style.transform = "";
-        burger3.style.width = "";
-      }
+      menu.classList.remove("is-open");
+      btn.classList.remove("is-open");
     }
+
+    syncNavState();
   });
+
+  syncNavState();
 </script>

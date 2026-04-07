@@ -7,11 +7,13 @@ import "../styles/global.css";
 interface Props {
   title: string;
   description?: string;
+  transparentNav?: boolean;
 }
 
 const {
   title,
   description = "Josh's personal portfolio — projects, blog, and gallery.",
+  transparentNav = false,
 } = Astro.props;
 ---
 
@@ -26,9 +28,9 @@ const {
     <title>{title}</title>
     <ClientRouter />
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body class="min-h-screen flex flex-col" data-transparent-nav={transparentNav ? "true" : "false"}>
     <Nav />
-    <main class="flex-1 pt-20">
+    <main class:list={["flex-1", transparentNav ? "pt-0" : "pt-28"]}>
       <slot />
     </main>
     <Footer />
