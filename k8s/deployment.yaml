@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: portfolio
-          image: ghcr.io/joshes14/portfolio:latest
+          image: ghcr.io/joshes14/joshelland.com:latest
           ports:
             - containerPort: 80
           resources:
