@@ -2,39 +2,29 @@
 const currentPath = Astro.url.pathname;
 
 const navLinks = [
-  { label: "Home", href: "/" },
+  { label: "Work", href: "/gallery" },
+  { label: "Writing", href: "/blog" },
   { label: "About", href: "/about" },
-  { label: "Blog", href: "/blog" },
-  { label: "Gallery", href: "/gallery" },
   { label: "Music", href: "/music" },
 ];
 ---
 
-<nav id="main-nav" transition:persist="navbar" class="fixed top-4 left-4 right-4 z-50 transition-all duration-300">
-  <div class="section-shell glass-panel rounded-2xl py-3.5 flex items-center justify-between transition-all duration-300 border border-white/80">
-    <!-- Logo -->
-    <a href="/" id="nav-logo" class="focus-ring group rounded-xl px-2 py-1.5 flex items-center gap-2.5 transition-all duration-300 hover:bg-white/55">
-      <span class="w-8 h-8 rounded-lg bg-vintage-green text-white text-xs font-semibold grid place-items-center shadow-sm transition-transform duration-300 group-hover:scale-105">
-        J
-      </span>
-      <span class="leading-none hidden sm:flex flex-col">
-        <span class="font-display text-sm sm:text-base tracking-[0.14em] font-bold text-vintage-green">JOSH</span>
-        <span class="text-[10px] uppercase tracking-[0.22em] text-muted-slate mt-1">Studio</span>
-      </span>
-      <span class="leading-none sm:hidden font-display text-lg tracking-[0.12em] font-bold text-vintage-green">J</span>
-      <span class="w-1.5 h-1.5 rounded-full bg-tennis-yellow group-hover:scale-125 transition-transform duration-300"></span>
+<nav id="main-nav" transition:persist="navbar" class="nav-wrap">
+  <div id="nav-shell" class="nav-bar">
+    <!-- Wordmark - simple text, no box -->
+    <a href="/" id="nav-logo" class="nav-wordmark focus-ring">
+      Josh Elland
     </a>
 
-    <!-- Desktop Links -->
-    <div class="hidden md:flex items-center gap-1" id="nav-links-desktop">
+    <!-- Desktop Links - simple horizontal list -->
+    <div class="nav-links" id="nav-links-desktop">
       {navLinks.map((link) => (
         <a
           href={link.href}
           class:list={[
-            "focus-ring rounded-lg px-3 py-2 text-sm font-medium transition-all duration-200",
-            currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href))
-              ? "bg-white/75 text-vintage-green shadow-sm"
-              : "text-muted-slate hover:text-vintage-green hover:bg-white/55",
+            "nav-link focus-ring",
+            (currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href)))
+              && "is-active",
           ]}
         >
           {link.label}
@@ -45,124 +35,82 @@ const navLinks = [
     <!-- Mobile Menu Button -->
     <button
       id="mobile-menu-btn"
-      class="focus-ring md:hidden flex flex-col gap-1.5 p-2.5 rounded-lg hover:bg-white/60 transition-colors"
-      aria-label="Toggle menu"
+      class="nav-burger focus-ring"
+      aria-label="Menu"
     >
-      <span class="block w-5 h-0.5 bg-vintage-green rounded-full transition-all duration-300" id="burger-1"></span>
-      <span class="block w-5 h-0.5 bg-vintage-green rounded-full transition-all duration-300" id="burger-2"></span>
-      <span class="block w-3.5 h-0.5 bg-vintage-green rounded-full transition-all duration-300 ml-auto" id="burger-3"></span>
+      <span id="burger-1"></span>
+      <span id="burger-2"></span>
     </button>
   </div>
 
   <!-- Mobile Menu -->
-  <div
-    id="mobile-menu"
-    class="md:hidden hidden absolute top-[calc(100%+0.5rem)] left-0 right-0 glass-panel border border-white/80 rounded-2xl shadow-sm py-3"
-  >
-    <div class="px-3 flex flex-col gap-1.5">
-      {navLinks.map((link) => (
-        <a
-          href={link.href}
-          class:list={[
-            "focus-ring px-4 py-3 rounded-lg text-base font-medium transition-colors duration-200",
-            currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href))
-              ? "bg-white/80 text-vintage-green"
-              : "text-muted-slate hover:text-vintage-green hover:bg-white/70",
-          ]}
-        >
-          {link.label}
-        </a>
-      ))}
-    </div>
+  <div id="mobile-menu" class="nav-mobile-menu">
+    {navLinks.map((link, i) => (
+      <a
+        href={link.href}
+        class:list={[
+          "nav-mobile-link",
+          (currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href)))
+            && "is-active",
+        ]}
+        style={`--i: ${i}`}
+      >
+        {link.label}
+      </a>
+    ))}
   </div>
 </nav>
 
 <script>
-  // Mobile menu toggle
   const btn = document.getElementById("mobile-menu-btn");
   const menu = document.getElementById("mobile-menu");
   const burger1 = document.getElementById("burger-1");
   const burger2 = document.getElementById("burger-2");
-  const burger3 = document.getElementById("burger-3");
+  const nav = document.getElementById("main-nav");
 
   let isOpen = false;
 
+  const isTransparentNavPage = () => document.body.dataset.transparentNav === "true";
+
+  const syncNavState = () => {
+    if (!nav) return;
+    const scrolled = window.scrollY > 40;
+    nav.classList.toggle("is-scrolled", scrolled);
+  };
+
   btn?.addEventListener("click", () => {
     isOpen = !isOpen;
-    menu?.classList.toggle("hidden");
-
-    if (isOpen) {
-      burger1!.style.transform = "rotate(45deg) translate(3px, 3px)";
-      burger2!.style.opacity = "0";
-      burger3!.style.transform = "rotate(-45deg) translate(3px, -3px)";
-      burger3!.style.width = "1.25rem";
-    } else {
-      burger1!.style.transform = "";
-      burger2!.style.opacity = "";
-      burger3!.style.transform = "";
-      burger3!.style.width = "";
-    }
+    menu?.classList.toggle("is-open", isOpen);
+    btn?.classList.toggle("is-open", isOpen);
   });
 
-  // Navbar scroll effect
-  const nav = document.getElementById("main-nav");
+  window.addEventListener("scroll", syncNavState, { passive: true });
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 24) {
-      nav?.classList.add("top-2");
-      nav?.classList.remove("top-4");
-    } else {
-      nav?.classList.add("top-4");
-      nav?.classList.remove("top-2");
-    }
-  });
-
-  // Handle active link updates for seamless navigation
   document.addEventListener('astro:page-load', () => {
     const currentPath = window.location.pathname;
     const desktopLinks = document.querySelectorAll('#nav-links-desktop a');
     const mobileLinks = document.querySelectorAll('#mobile-menu a');
     
-    const updateLinks = (links: NodeListOf<HTMLAnchorElement>, isMobile: boolean) => {
+    const updateLinks = (links: NodeListOf<Element>) => {
       links.forEach(link => {
         const href = link.getAttribute('href');
         if (!href) return;
-        
         const isActive = currentPath === href || (href !== '/' && currentPath.startsWith(href));
-        
-        if (isActive) {
-          if (isMobile) {
-            link.classList.add('bg-white/80', 'text-vintage-green');
-            link.classList.remove('text-muted-slate', 'hover:text-vintage-green', 'hover:bg-white/70');
-          } else {
-            link.classList.add('bg-white/75', 'text-vintage-green', 'shadow-sm');
-            link.classList.remove('text-muted-slate', 'hover:text-vintage-green', 'hover:bg-white/55');
-          }
-        } else {
-          if (isMobile) {
-            link.classList.remove('bg-white/80', 'text-vintage-green');
-            link.classList.add('text-muted-slate', 'hover:text-vintage-green', 'hover:bg-white/70');
-          } else {
-            link.classList.remove('bg-white/75', 'text-vintage-green', 'shadow-sm');
-            link.classList.add('text-muted-slate', 'hover:text-vintage-green', 'hover:bg-white/55');
-          }
-        }
+        link.classList.toggle('is-active', isActive);
       });
     };
     
-    updateLinks(desktopLinks as NodeListOf<HTMLAnchorElement>, false);
-    updateLinks(mobileLinks as NodeListOf<HTMLAnchorElement>, true);
+    updateLinks(desktopLinks);
+    updateLinks(mobileLinks);
 
-    // Also close mobile menu on page turn if it was left open
     if (isOpen && btn && menu) {
       isOpen = false;
-      menu.classList.add("hidden");
-      if (burger1 && burger2 && burger3) {
-        burger1.style.transform = "";
-        burger2.style.opacity = "";
-        burger3.style.transform = "";
-        burger3.style.width = "";
-      }
+      menu.classList.remove("is-open");
+      btn.classList.remove("is-open");
     }
+
+    syncNavState();
   });
+
+  syncNavState();
 </script>

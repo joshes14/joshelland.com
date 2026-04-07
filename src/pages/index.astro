@@ -1,7 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import AnimatedHeading from "../components/AnimatedHeading";
-import FadeIn from "../components/FadeIn";
 import { getCollection } from "astro:content";
 
 const posts = (await getCollection("blog"))
@@ -10,131 +8,261 @@ const posts = (await getCollection("blog"))
 const latestPost = posts[0];
 ---
 
-<BaseLayout title="Josh — Creative Developer" description="Welcome to Josh's corner of the internet. Projects, thoughts, and life through a creative lens.">
-  <section class="relative min-h-[86vh] flex items-center overflow-hidden" id="hero">
-    <div class="section-shell relative z-10 w-full pt-16 md:pt-8">
-      <div class="max-w-3xl">
-        <FadeIn client:load delay={0}>
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium text-muted-slate uppercase tracking-[0.16em] mb-8 glass-panel">
-            <span class="w-1.5 h-1.5 rounded-full bg-tennis-yellow animate-pulse"></span>
-            <span>Grand Slam energy for digital craft</span>
-          </div>
-        </FadeIn>
-
-        <AnimatedHeading
-          client:load
-          text="Soft focus. Sharp execution."
-          className="text-5xl sm:text-6xl md:text-8xl font-display font-semibold tracking-tight text-vintage-green mb-6"
-          delay={0.1}
+<BaseLayout
+  title="US Open Combined Hub"
+  description="US Open inspired landing page with hero, match center, editorial highlights, and player spotlights."
+>
+  <section class="us-open-shell">
+    <div class="mx-auto max-w-[1440px] px-4 pb-20 pt-8 md:px-10 md:pt-12">
+      <section class="relative overflow-hidden rounded-3xl min-h-[540px] md:min-h-[780px]">
+        <img
+          src="/images/us-open/hero-stadium.jpg"
+          alt="Arthur Ashe Stadium at night with a glowing blue hard court"
+          class="absolute inset-0 h-full w-full object-cover"
+          loading="eager"
         />
-
-        <FadeIn client:load delay={0.45}>
-          <p class="text-lg md:text-2xl text-muted-slate leading-relaxed max-w-2xl mb-10 font-body font-normal">
-            I build digital products with a clean rhythm, document the process in writing, and share visual and sonic inspiration that keeps the work moving.
-          </p>
-        </FadeIn>
-
-        <FadeIn client:load delay={0.6}>
-          <div class="flex flex-wrap gap-3 mt-6">
-            <a href="/about" id="cta-about" class="focus-ring cta-primary inline-flex items-center justify-center px-7 py-3 rounded-xl font-semibold transition-all duration-300">
-              Get to know me
+        <div class="absolute inset-0 bg-gradient-to-t from-[#122651]/85 via-[#122651]/35 to-transparent"></div>
+        <div class="relative z-10 flex min-h-[540px] flex-col justify-end p-6 md:min-h-[780px] md:p-14 lg:p-20">
+          <span class="inline-block w-fit rounded-full bg-[#E2EB52] px-4 py-1 text-xs font-extrabold uppercase tracking-[0.22em] text-[#1B1D00]">
+            Live from New York
+          </span>
+          <h1 class="mt-5 max-w-4xl text-5xl italic leading-[0.94] text-white md:text-7xl lg:text-8xl us-open-headline">
+            Experience the magic of the hard court
+          </h1>
+          <div class="mt-8 flex flex-col items-start gap-6 sm:flex-row sm:items-center">
+            <a
+              href="/gallery"
+              class="inline-flex cursor-pointer items-center gap-2 rounded-full bg-white px-7 py-3 text-base font-bold text-[#122651] transition-all duration-200 hover:bg-[#F1EDE8]"
+            >
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M8 5v14l11-7z"></path>
+              </svg>
+              Watch Highlights
             </a>
-            <a href="/music" id="cta-music" class="focus-ring cta-secondary inline-flex items-center justify-center px-7 py-3 rounded-xl font-semibold transition-all duration-300">
-              Visit music room
-            </a>
-          </div>
-        </FadeIn>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-20 md:py-24" id="highlights">
-    <div class="section-shell">
-      <FadeIn client:load>
-        <div class="mb-12 md:mb-14">
-          <h2 class="text-3xl md:text-5xl font-display font-semibold text-vintage-green mb-3">
-            Explore by mood
-          </h2>
-          <p class="text-muted-slate text-lg max-w-xl">
-            Four ways to navigate the same creative thread.
-          </p>
-        </div>
-      </FadeIn>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <FadeIn client:load delay={0.06}>
-          <a href="/blog" class="surface-panel rounded-2xl p-6 h-full flex flex-col group hover:border-vintage-clay/45 transition-all duration-300 cursor-pointer" id="highlight-blog">
-            <h3 class="font-display text-2xl font-semibold text-vintage-green mb-3">Writing</h3>
-            <p class="text-muted-slate text-sm leading-relaxed mb-8 flex-grow">Build notes, architecture choices, and practical lessons.</p>
-            <span class="text-xs uppercase tracking-[0.2em] font-medium text-vintage-green group-hover:text-vintage-clay transition-colors">Read blog</span>
-          </a>
-        </FadeIn>
-
-        <FadeIn client:load delay={0.12}>
-          <a href="/gallery" class="surface-panel rounded-2xl p-6 h-full flex flex-col group hover:border-vintage-clay/45 transition-all duration-300 cursor-pointer" id="highlight-gallery">
-            <h3 class="font-display text-2xl font-semibold text-vintage-green mb-3">Gallery</h3>
-            <p class="text-muted-slate text-sm leading-relaxed mb-8 flex-grow">Photos, concepts, and snapshots from ongoing experiments.</p>
-            <span class="text-xs uppercase tracking-[0.2em] font-medium text-vintage-green group-hover:text-vintage-clay transition-colors">View gallery</span>
-          </a>
-        </FadeIn>
-
-        <FadeIn client:load delay={0.18}>
-          <a href="/about" class="surface-panel rounded-2xl p-6 h-full flex flex-col group hover:border-vintage-clay/45 transition-all duration-300 cursor-pointer" id="highlight-about">
-            <h3 class="font-display text-2xl font-semibold text-vintage-green mb-3">About</h3>
-            <p class="text-muted-slate text-sm leading-relaxed mb-8 flex-grow">Background, values, and how I approach craft and systems.</p>
-            <span class="text-xs uppercase tracking-[0.2em] font-medium text-vintage-green group-hover:text-vintage-clay transition-colors">Meet Josh</span>
-          </a>
-        </FadeIn>
-
-        <FadeIn client:load delay={0.24}>
-          <a href="/music" class="surface-panel rounded-2xl p-6 h-full flex flex-col group hover:border-vintage-clay/45 transition-all duration-300 cursor-pointer" id="highlight-music">
-            <h3 class="font-display text-2xl font-semibold text-vintage-green mb-3">Music</h3>
-            <p class="text-muted-slate text-sm leading-relaxed mb-8 flex-grow">A rotating set of tracks and playlists that frame each project season.</p>
-            <span class="text-xs uppercase tracking-[0.2em] font-medium text-vintage-green group-hover:text-vintage-clay transition-colors">Open music page</span>
-          </a>
-        </FadeIn>
-      </div>
-    </div>
-  </section>
-
-  <section class="pb-10 md:pb-16" id="recent-posts">
-    <div class="section-shell">
-      <FadeIn client:load>
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-          <div class="max-w-xl">
-            <h2 class="text-3xl md:text-4xl font-display font-semibold text-vintage-green mb-2">Latest writing</h2>
-            <p class="text-muted-slate text-base">One recent post to start with.</p>
-          </div>
-          <a href="/blog" class="text-sm font-medium uppercase tracking-[0.2em] text-vintage-green hover:text-vintage-clay transition-colors">All articles</a>
-        </div>
-      </FadeIn>
-
-      <FadeIn client:load delay={0.1}>
-        {latestPost ? (
-          <a href={`/blog/${latestPost.id}`} class="block group cursor-pointer">
-            <article class="surface-panel rounded-2xl p-7 md:p-9 group-hover:border-vintage-clay/45 transition-all duration-300">
-              <div class="flex items-center gap-4 mb-5">
-                {latestPost.data.tags && latestPost.data.tags.length > 0 && (
-                  <span class="text-xs font-semibold px-2 py-1 bg-white/80 border border-warm-border text-vintage-green uppercase tracking-widest rounded-md">{latestPost.data.tags[0]}</span>
-                )}
-                <span class="text-xs text-muted-slate font-medium">
-                  {latestPost.data.date.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })}
-                </span>
-              </div>
-              <h3 class="font-display text-2xl md:text-3xl font-semibold text-vintage-green mb-3 group-hover:text-vintage-clay transition-colors duration-300">
-                {latestPost.data.title}
-              </h3>
-              <p class="text-muted-slate leading-relaxed max-w-3xl text-lg line-clamp-2">
-                {latestPost.data.description}
+            <aside class="max-w-sm rounded-2xl border border-white/30 bg-white/10 p-5 text-white backdrop-blur-sm">
+              <h2 class="text-xl italic us-open-headline">The Legacy</h2>
+              <p class="mt-2 text-sm leading-relaxed text-white/90">
+                Where titans are born and legends are written. A tradition spanning over a century in the heart of Queens.
               </p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="-mx-4 mt-10 overflow-x-auto px-4 pb-2 md:mx-0 md:px-0 us-open-scrollbar" aria-label="Match center">
+        <div class="flex gap-5">
+          <article class="min-w-[320px] rounded-3xl border border-[#DAD6D1] bg-[#F7F3EE] p-6 shadow-[0_12px_30px_-12px_rgba(28,28,25,0.25)] transition-all duration-200 hover:-translate-y-1">
+            <div class="mb-4 flex items-center justify-between">
+              <span class="text-xs font-extrabold uppercase tracking-[0.14em] text-[#5E6300]">Live - Quarter Final</span>
+              <span class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#747684]">On Court</span>
+            </div>
+            <div class="space-y-4 text-[#1C1C19]">
+              <div class="flex items-center justify-between">
+                <p class="font-bold">N. Djokovic</p>
+                <p class="font-mono text-sm"><span class="opacity-50">6 4 </span><span class="font-bold text-[#122651]">2*</span></p>
+              </div>
+              <div class="flex items-center justify-between">
+                <p class="font-bold">C. Alcaraz</p>
+                <p class="font-mono text-sm"><span class="opacity-50">3 6 </span><span class="font-bold text-[#122651]">1</span></p>
+              </div>
+            </div>
+          </article>
+          <article class="min-w-[320px] rounded-3xl border border-[#DAD6D1] bg-[#F7F3EE] p-6 shadow-[0_12px_30px_-12px_rgba(28,28,25,0.25)]">
+            <div class="mb-4 flex items-center justify-between">
+              <span class="text-xs font-extrabold uppercase tracking-[0.14em] text-[#747684]">Upcoming - 7:00 PM</span>
+              <span class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#747684]">Arthur Ashe</span>
+            </div>
+            <div class="space-y-4 text-[#1C1C19]">
+              <div class="flex items-center justify-between">
+                <p class="font-medium">J. Sinner</p>
+                <p class="text-xs font-bold text-[#122651]/40">0-0</p>
+              </div>
+              <div class="flex items-center justify-between">
+                <p class="font-medium">D. Medvedev</p>
+                <p class="text-xs font-bold text-[#122651]/40">0-0</p>
+              </div>
+            </div>
+          </article>
+          <article class="min-w-[320px] rounded-3xl border border-[#DAD6D1] bg-[#F7F3EE] p-6 shadow-[0_12px_30px_-12px_rgba(28,28,25,0.25)] opacity-95">
+            <div class="mb-4 flex items-center justify-between">
+              <span class="text-xs font-extrabold uppercase tracking-[0.14em] text-[#747684]">Final Score</span>
+              <span class="text-[10px] font-bold uppercase tracking-[0.12em] text-[#747684]">Completed</span>
+            </div>
+            <div class="space-y-4 text-[#1C1C19]">
+              <div class="flex items-center justify-between">
+                <p class="font-bold">A. Sabalenka</p>
+                <p class="font-mono text-sm font-bold text-[#122651]">6 6</p>
+              </div>
+              <div class="flex items-center justify-between opacity-70">
+                <p class="font-medium">J. Paolini</p>
+                <p class="font-mono text-sm">2 4</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="mt-20 md:mt-28">
+        <div class="mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div class="max-w-2xl">
+            <h2 class="text-4xl italic leading-tight text-[#122651] md:text-5xl us-open-headline">Latest Editorial Insights</h2>
+            <p class="mt-3 text-base leading-relaxed text-[#444653] md:text-lg">Deep dives into technical shifts, psychological battles, and historic moments shaping this tournament.</p>
+          </div>
+          <a href="/blog" class="inline-flex w-fit items-center gap-3 border-b-2 border-[#122651]/20 pb-1 text-sm font-bold uppercase tracking-[0.2em] text-[#122651] transition-colors hover:border-[#122651]">
+            View Archive
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+              <path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="grid gap-8 md:grid-cols-12 md:gap-10">
+          <article class="group md:col-span-8">
+            <div class="mb-6 aspect-[16/9] overflow-hidden rounded-3xl">
+              <img src="/images/us-open/editorial-main.jpg" alt="Tennis player in mid-swing under dramatic lighting" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+            </div>
+            <h3 class="text-3xl italic text-[#122651] transition-colors duration-200 group-hover:text-[#5E6300] md:text-4xl us-open-headline">
+              The Geometry of the Baseline: How Modern Courts Changed the Serve and Volley
+            </h3>
+            <p class="mt-3 max-w-3xl text-base leading-relaxed text-[#444653]">
+              From wooden rackets to carbon fiber, explore the evolution of baseline dominance and what it means for the next generation of athletes.
+            </p>
+          </article>
+
+          <div class="space-y-10 md:col-span-4">
+            <article class="group">
+              <div class="mb-4 aspect-video overflow-hidden rounded-3xl">
+                <img src="/images/us-open/editorial-court.jpg" alt="Blue tennis court details with net shadow" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              </div>
+              <h3 class="text-2xl italic leading-tight text-[#122651] transition-colors duration-200 group-hover:text-[#5E6300] us-open-headline">Night Sessions: Why New York's Energy Is Different</h3>
             </article>
+            <article class="group">
+              <div class="mb-4 aspect-video overflow-hidden rounded-3xl">
+                <img src="/images/us-open/editorial-balls.jpg" alt="Close-up of bright yellow tennis balls" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              </div>
+              <h3 class="text-2xl italic leading-tight text-[#122651] transition-colors duration-200 group-hover:text-[#5E6300] us-open-headline">The Science of the Spin</h3>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-24 border-t border-[#122651]/10 pt-16">
+        <div class="mb-12 text-center">
+          <h2 class="text-4xl italic text-[#122651] md:text-5xl us-open-headline">Titans of the Tour</h2>
+          <p class="mx-auto mt-4 max-w-lg text-[#444653]">Statistical snapshots of the contenders setting the pace this season.</p>
+        </div>
+        <div class="grid gap-8 lg:grid-cols-2">
+          <article class="rounded-3xl border border-[#DAD6D1] bg-[#F7F3EE] p-7 md:p-9">
+            <div class="flex flex-col items-center gap-6 md:flex-row">
+              <img src="/images/us-open/player-djokovic.jpg" alt="Portrait of Novak Djokovic" class="h-36 w-36 rounded-full object-cover md:h-40 md:w-40" loading="lazy" />
+              <div class="flex-1 text-center md:text-left">
+                <h3 class="text-3xl italic text-[#122651] us-open-headline">Novak Djokovic</h3>
+                <p class="mt-1 text-xs font-bold uppercase tracking-[0.2em] text-[#5E6300]">World No. 1</p>
+                <div class="mt-5 grid grid-cols-3 gap-3">
+                  <div class="rounded-2xl bg-white/80 p-3 text-center"><p class="text-[10px] uppercase text-[#444653]">Win Rate</p><p class="text-xl font-bold text-[#122651]">89%</p></div>
+                  <div class="rounded-2xl bg-white/80 p-3 text-center"><p class="text-[10px] uppercase text-[#444653]">Aces</p><p class="text-xl font-bold text-[#122651]">242</p></div>
+                  <div class="rounded-2xl bg-white/80 p-3 text-center"><p class="text-[10px] uppercase text-[#444653]">Slams</p><p class="text-xl font-bold text-[#122651]">24</p></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="rounded-3xl border border-[#DAD6D1] bg-[#F7F3EE] p-7 md:p-9">
+            <div class="flex flex-col items-center gap-6 md:flex-row">
+              <img src="/images/us-open/player-alcaraz.jpg" alt="Portrait of Carlos Alcaraz" class="h-36 w-36 rounded-full object-cover md:h-40 md:w-40" loading="lazy" />
+              <div class="flex-1 text-center md:text-left">
+                <h3 class="text-3xl italic text-[#122651] us-open-headline">Carlos Alcaraz</h3>
+                <p class="mt-1 text-xs font-bold uppercase tracking-[0.2em] text-[#5E6300]">World No. 3</p>
+                <div class="mt-5 grid grid-cols-3 gap-3">
+                  <div class="rounded-2xl bg-white/80 p-3 text-center"><p class="text-[10px] uppercase text-[#444653]">Win Rate</p><p class="text-xl font-bold text-[#122651]">82%</p></div>
+                  <div class="rounded-2xl bg-white/80 p-3 text-center"><p class="text-[10px] uppercase text-[#444653]">Aces</p><p class="text-xl font-bold text-[#122651]">188</p></div>
+                  <div class="rounded-2xl bg-white/80 p-3 text-center"><p class="text-[10px] uppercase text-[#444653]">Slams</p><p class="text-xl font-bold text-[#122651]">4</p></div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="mt-24">
+        <div class="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <h2 class="text-3xl italic text-[#122651] md:text-4xl us-open-headline">Explore the Hub</h2>
+          <a href="/about" class="text-sm font-bold uppercase tracking-[0.2em] text-[#122651] transition-colors hover:text-[#5E6300]">About this project</a>
+        </div>
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <a href="/blog" class="cursor-pointer rounded-3xl border border-[#DAD6D1] bg-[#F7F3EE] p-6 transition-all duration-200 hover:-translate-y-1 hover:border-[#5E6300]/40">
+            <h3 class="text-xl font-bold text-[#122651]">Writing</h3>
+            <p class="mt-2 text-sm text-[#444653]">Build notes, architecture choices, and practical lessons.</p>
+          </a>
+          <a href="/gallery" class="cursor-pointer rounded-3xl border border-[#DAD6D1] bg-[#F7F3EE] p-6 transition-all duration-200 hover:-translate-y-1 hover:border-[#5E6300]/40">
+            <h3 class="text-xl font-bold text-[#122651]">Gallery</h3>
+            <p class="mt-2 text-sm text-[#444653]">Photos, concepts, and snapshots from ongoing experiments.</p>
+          </a>
+          <a href="/about" class="cursor-pointer rounded-3xl border border-[#DAD6D1] bg-[#F7F3EE] p-6 transition-all duration-200 hover:-translate-y-1 hover:border-[#5E6300]/40">
+            <h3 class="text-xl font-bold text-[#122651]">About</h3>
+            <p class="mt-2 text-sm text-[#444653]">Background, values, and how I approach craft and systems.</p>
+          </a>
+          <a href="/music" class="cursor-pointer rounded-3xl border border-[#DAD6D1] bg-[#F7F3EE] p-6 transition-all duration-200 hover:-translate-y-1 hover:border-[#5E6300]/40">
+            <h3 class="text-xl font-bold text-[#122651]">Music</h3>
+            <p class="mt-2 text-sm text-[#444653]">A rotating set of tracks and playlists for each project season.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="mt-20">
+        <div class="mb-5 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <div>
+            <h2 class="text-3xl italic text-[#122651] md:text-4xl us-open-headline">Latest Writing</h2>
+            <p class="mt-2 text-sm text-[#444653]">One recent post to start with.</p>
+          </div>
+          <a href="/blog" class="text-xs font-bold uppercase tracking-[0.2em] text-[#122651] transition-colors hover:text-[#5E6300]">All articles</a>
+        </div>
+
+        {latestPost ? (
+          <a href={`/blog/${latestPost.id}`} class="group block cursor-pointer rounded-3xl border border-[#DAD6D1] bg-[#F7F3EE] p-7 transition-all duration-200 hover:-translate-y-1 hover:border-[#5E6300]/40 md:p-9">
+            <div class="mb-4 flex flex-wrap items-center gap-3 text-xs">
+              {latestPost.data.tags && latestPost.data.tags.length > 0 && (
+                <span class="rounded-full bg-white px-3 py-1 font-bold uppercase tracking-[0.12em] text-[#122651]">{latestPost.data.tags[0]}</span>
+              )}
+              <span class="font-medium text-[#444653]">
+                {latestPost.data.date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+              </span>
+            </div>
+            <h3 class="text-2xl font-bold text-[#122651] transition-colors duration-200 group-hover:text-[#5E6300] md:text-3xl">
+              {latestPost.data.title}
+            </h3>
+            <p class="mt-3 max-w-3xl text-base leading-relaxed text-[#444653]">
+              {latestPost.data.description}
+            </p>
           </a>
         ) : (
-          <div class="p-12 border border-dashed border-warm-border text-center text-muted-slate rounded-2xl surface-panel">
+          <div class="rounded-3xl border border-dashed border-[#DAD6D1] bg-[#F7F3EE] p-10 text-center text-[#444653]">
             <p>New stories arriving soon.</p>
           </div>
         )}
-      </FadeIn>
+      </section>
     </div>
   </section>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Newsreader:ital,wght@0,500;0,700;1,500;1,700&display=swap");
+
+    .us-open-shell {
+      background: radial-gradient(circle at 18% 0%, #ffffff 0%, #f4f0eb 42%, #ece8e2 100%);
+      font-family: "Manrope", sans-serif;
+    }
+
+    .us-open-headline {
+      font-family: "Newsreader", serif;
+    }
+
+    .us-open-scrollbar {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .us-open-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
 </BaseLayout>
